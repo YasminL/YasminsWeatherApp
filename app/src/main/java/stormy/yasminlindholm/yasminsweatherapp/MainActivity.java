@@ -1,13 +1,11 @@
 package stormy.yasminlindholm.yasminsweatherapp;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -21,6 +19,8 @@ import java.io.IOException;
 public class MainActivity extends ActionBarActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
+    private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +64,9 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
         } else {
-            Toast.makeText(this, getString(R.string.error_noAvaliableInternet),
-                    Toast.LENGTH_LONG).show();
+            alertUserAboutNoConnection();
+           // Toast.makeText(this, getString(R.string.error_noAvaliableInternet),
+            //        Toast.LENGTH_LONG).show();
         }
 
         Log.d(TAG, "Main UI code is running");
@@ -82,7 +83,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void alertUserAboutError() {
-        AlertDialogFragment dialog = new AlertDialogFragment();
-        dialog.show(getFragmentManager(), "error_dialog");
+        dialogError.show(getFragmentManager(), "error_error");
+    }
+
+    private void alertUserAboutNoConnection() {
+        dialogNoInteret.show(getFragmentManager(), "error_noInternet");
     }
 }

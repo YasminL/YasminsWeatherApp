@@ -9,7 +9,7 @@ import android.os.Bundle;
 /**
  * Created by yasmin.lindholm on 2015-07-31.
  */
-public class AlertDialogFragment extends DialogFragment {
+public class AlertDialogFragment_error extends DialogFragment {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class AlertDialogFragment extends DialogFragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(context)
                     .setTitle(context.getString(R.string.error_title))
                     .setMessage(context.getString(R.string.error_message))
-                    .setPositiveButton(context.getString(R.string.error_ok_button), null);
+                    .setPositiveButton(context.getString(R.string.error_OK_buttonText), null);
             AlertDialog dialog = builder.create();
             return dialog;
         }
