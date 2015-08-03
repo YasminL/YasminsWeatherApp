@@ -11,54 +11,43 @@ public class CurrentWeather {
     private double mPrecipitation;
     private String mSummary;
 
-    public String getmIcon() {
+    public String getIcon() {
         return mIcon;
     }
 
-    public void setmIcon(String mIcon) {
-        this.mIcon = mIcon;
+    public void setIcon(String icon) {
+        mIcon = icon;
     }
 
-    public long getmTime() {
-        return mTime;
-    }
-
-    public void setmTime(long mTime) {
-         this.mTime = mTime;
-    }
-
-    public double getmTemperature() {
+    public double getTemperature() {
         return mTemperature;
     }
 
-    public void setmTemperature(double mTemperature) {
-        this.mTemperature = mTemperature;
+    public void setTemperature(double temperature) {
+        mTemperature = temperature;
     }
 
-    public double mHumidity() {
+    public double getHumidity() {
         return mHumidity;
     }
 
-    public void setmHumidity(double mHumidity) {
-        this.mHumidity = mHumidity;
+    public void setHumidity(double humidity) {
+        mHumidity = humidity;
     }
 
-    public double getmPrecipitation() {
+    public double getPrecipitation() {
         return mPrecipitation;
     }
 
-    public void setmPrecipitation(double mPrecepitation) {
-        this.mPrecipitation = mPrecepitation;
+    public void setPrecipitation(double precipitation) {
+        mPrecipitation = precipitation;
     }
 
-    public String getmSummary() {
+    public String getSummary() {
         return mSummary;
     }
 
-    public void setmSummary(String mSummary) {
-        this.mSummary = mSummary;
+    public void setSummary(String summary) {
+        mSummary = summary;
     }
-
-
-
 }
