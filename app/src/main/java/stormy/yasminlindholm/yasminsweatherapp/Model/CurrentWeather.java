@@ -1,5 +1,9 @@
 package stormy.yasminlindholm.yasminsweatherapp.Model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by yasmin.lindholm on 2015-08-03.
  */
@@ -22,6 +26,14 @@ public class CurrentWeather {
 
     public long getTime () {
         return mTime;
+    }
+
+    public String getFormattedTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+        formatter.setTimeZone(TimeZone.getTimeZone(getTimeZone()));
+        Date dateTime = new Date(getTime()*1000);
+        String timeString = formatter.format(dateTime);
+        return timeString;
     }
 
     public void setTime(long mTime) {

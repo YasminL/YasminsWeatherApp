@@ -3,9 +3,10 @@ package stormy.yasminlindholm.yasminsweatherapp.Controller;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -62,6 +63,7 @@ public class MainActivity extends ActionBarActivity {
                         Log.v(TAG, JsonData);
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(JsonData);
+
                         }
                         else {
                             alertUserAboutError();
@@ -102,6 +104,10 @@ public class MainActivity extends ActionBarActivity {
         currentWeather.setIcon(icon);
         currentWeather.setTemperature(temp);
         currentWeather.setPrecipitation(precipitaiont);
+        currentWeather.setHumidity(humidity);
+        currentWeather.setTimeZone(timezone);
+
+        Log.d(TAG, currentWeather.getFormattedTime());
 
         return currentWeather;
         //String icon = forecast.getString("icon");
