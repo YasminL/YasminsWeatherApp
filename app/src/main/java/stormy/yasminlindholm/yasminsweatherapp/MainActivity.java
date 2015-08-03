@@ -6,15 +6,12 @@ import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-
 import java.io.IOException;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -65,8 +62,6 @@ public class MainActivity extends ActionBarActivity {
             });
         } else {
             alertUserAboutNoConnection();
-           // Toast.makeText(this, getString(R.string.error_noAvaliableInternet),
-            //        Toast.LENGTH_LONG).show();
         }
 
         Log.d(TAG, "Main UI code is running");
