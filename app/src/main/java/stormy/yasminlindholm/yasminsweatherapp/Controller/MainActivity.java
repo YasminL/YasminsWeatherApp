@@ -11,8 +11,13 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
+import stormy.yasminlindholm.yasminsweatherapp.Model.CurrentWeather;
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
 public class MainActivity extends ActionBarActivity {
@@ -20,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
+    private CurrentWeather mCurrentWeather = new CurrentWeather();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +33,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
-        double latitude = 59.33259;
-        double longitude = 18.01480;
+        double latitude = 18.01480;
+        double longitude = 59.33259;
         String forecastURL = "https://api.forecast.io/forecast/"
                 + APIKey + "/" + longitude + "," + latitude ;
 
@@ -52,21 +58,46 @@ public class MainActivity extends ActionBarActivity {
                 public void onResponse(Response response) throws IOException {
 
                     try {
-                        Log.v(TAG, response.body().string());
+                        String JsonData = response.body().string();
+                        Log.v(TAG, JsonData);
                         if (response.isSuccessful()) {
-                        } else {
+                            mCurrentWeather = getCurrentDetails(JsonData);
+                        }
+                        else {
                             alertUserAboutError();
                         }
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
+                    }
+                    catch (Exception e) {
+                        Log.e(TAG, "JSON Exception caught", e);
                     }
                 }
             });
-        } else {
+        }
+        else {
             alertUserAboutNoConnection();
         }
 
         Log.d(TAG, "Main UI code is running");
+    }
+
+    private CurrentWeather getCurrentDetails(String JsonData) throws JSONException {
+        JSONObject forecast = new JSONObject(JsonData);
+        String timezone = forecast.getString("timezone");
+        Log.i(TAG, "From JSON: " + timezone);
+        
+        return null;
+        //String icon = forecast.getString("icon");
+
+        /* private String mIcon;
+        private long mTime;
+        private String mTimeZone;
+        private double mTemperature;
+        private double mHumidity;
+        private double mPrecipitation;
+        private String mSummary; */
     }
 
     private boolean isNetworkAvaliable() {

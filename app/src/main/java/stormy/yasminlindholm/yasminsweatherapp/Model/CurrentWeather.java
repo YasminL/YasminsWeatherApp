@@ -6,6 +6,7 @@ package stormy.yasminlindholm.yasminsweatherapp.Model;
 public class CurrentWeather {
     private String mIcon;
     private long mTime;
+    private String mTimeZone;
     private double mTemperature;
     private double mHumidity;
     private double mPrecipitation;
@@ -17,6 +18,22 @@ public class CurrentWeather {
 
     public void setIcon(String icon) {
         mIcon = icon;
+    }
+
+    public long getTime () {
+        return mTime;
+    }
+
+    public void setTime(long mTime) {
+        this.mTime = mTime;
+    }
+
+    public String getTimeZone() {
+        return mTimeZone;
+    }
+
+    public void setTimeZone(String mTimeZone) {
+        this.mTimeZone = mTimeZone;
     }
 
     public double getTemperature() {
