@@ -1,4 +1,4 @@
-package stormy.yasminlindholm.yasminsweatherapp;
+package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -12,6 +12,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import java.io.IOException;
+
+import stormy.yasminlindholm.yasminsweatherapp.R;
 
 public class MainActivity extends ActionBarActivity {
 

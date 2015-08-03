@@ -1,10 +1,12 @@
-package stormy.yasminlindholm.yasminsweatherapp;
+package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import stormy.yasminlindholm.yasminsweatherapp.R;
 
 /**
  * Created by yasmin.lindholm on 2015-07-31.
