@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
-    private CurrentWeather mCurrentWeather = new CurrentWeather();
+    private CurrentWeather mCurrentWeather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,17 +87,25 @@ public class MainActivity extends ActionBarActivity {
         JSONObject forecast = new JSONObject(JsonData);
         String timezone = forecast.getString("timezone");
         Log.i(TAG, "From JSON: " + timezone);
-        
-        return null;
+
+        JSONObject currently = forecast.getJSONObject("currently");
+        long time = currently.getLong("time");
+        String summary = currently.getString("summary");
+        String icon = currently.getString("icon");
+        double temp = currently.getDouble("temperature");
+        double humidity = currently.getDouble("humidity");
+        double precipitaiont = currently.getDouble("precipProbability");
+
+        CurrentWeather currentWeather = new CurrentWeather();
+        currentWeather.setTime(time);
+        currentWeather.setSummary(summary);
+        currentWeather.setIcon(icon);
+        currentWeather.setTemperature(temp);
+        currentWeather.setPrecipitation(precipitaiont);
+
+        return currentWeather;
         //String icon = forecast.getString("icon");
 
-        /* private String mIcon;
-        private long mTime;
-        private String mTimeZone;
-        private double mTemperature;
-        private double mHumidity;
-        private double mPrecipitation;
-        private String mSummary; */
     }
 
     private boolean isNetworkAvaliable() {
