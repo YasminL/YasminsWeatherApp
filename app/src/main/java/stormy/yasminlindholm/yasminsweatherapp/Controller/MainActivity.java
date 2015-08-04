@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -27,11 +28,14 @@ public class MainActivity extends ActionBarActivity {
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
     private CurrentWeather mCurrentWeather;
+    private String mTimeZone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final TextView timeZone = (TextView) findViewById(R.id.TimeZoneLabel);
 
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
         double latitude = 18.01480;
@@ -63,7 +67,9 @@ public class MainActivity extends ActionBarActivity {
                         Log.v(TAG, JsonData);
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(JsonData);
-
+                            mTimeZone = mCurrentWeather.getTimeZone();
+                            Log.i(TAG, "We are logging from JSON the timezone: " + mTimeZone);
+                            timeZone.setText(mTimeZone);
                         }
                         else {
                             alertUserAboutError();
@@ -110,8 +116,6 @@ public class MainActivity extends ActionBarActivity {
         Log.d(TAG, currentWeather.getFormattedTime());
 
         return currentWeather;
-        //String icon = forecast.getString("icon");
-
     }
 
     private boolean isNetworkAvaliable() {

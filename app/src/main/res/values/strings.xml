@@ -10,6 +10,7 @@
     <string name="error_OK_buttonText">OK</string>
     <string name="error_message_noInternetConnection">No internet connection avaliable</string>
     <string name="error_title_ohno">Oh no!</string>
+    <string name="City">Stockholm</string>
 
 
 </resources>
