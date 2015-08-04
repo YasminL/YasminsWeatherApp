@@ -15,7 +15,7 @@ public class CurrentWeather {
     private String mTimeZone;
     private double mTemperature;
     private double mHumidity;
-    private double mPrecipitation;
+    private int mPrecipitation;
     private String mSummary;
 
     public String getIcon() {
@@ -88,7 +88,7 @@ public class CurrentWeather {
 
     public double getTemperature() {
         double temp = ((mTemperature - 32)*5)/9;
-        return Math.round(temp);
+        return Math.round(temp*10.0)/10.0;
 
     }
 
@@ -97,18 +97,18 @@ public class CurrentWeather {
     }
 
     public double getHumidity() {
-        return mHumidity;
+        return Math.round(mHumidity*10.0)/10.0;
     }
 
     public void setHumidity(double humidity) {
         mHumidity = humidity;
     }
 
-    public double getPrecipitation() {
-        return mPrecipitation;
+    public int getPrecipitation() {
+        return Math.round(mPrecipitation);
     }
 
-    public void setPrecipitation(double precipitation) {
+    public void setPrecipitation(int precipitation) {
         mPrecipitation = precipitation;
     }
 

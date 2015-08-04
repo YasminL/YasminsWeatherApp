@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
     private ImageView mWeatherIcon;
     private TextView mHumidityLabel;
     private TextView mRainSnow;
-    private TextView mSummary;
+    private TextView mSummaryLabel;
     private ImageView mRefresh;
 
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         mTemperatureLabel = (TextView) findViewById(R.id.temperatureLabel);
         mHumidityLabel = (TextView) findViewById(R.id.humidityValueLabel);
         mRainSnow = (TextView) findViewById(R.id.precipValueLabel);
-        mSummary = (TextView) findViewById(R.id.summaryLabel);
+        mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
 
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
@@ -110,6 +110,10 @@ public class MainActivity extends ActionBarActivity {
     private void updateDisplay() {
         mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
         mTimeLabel.setText("@" + mCurrentWeather.getFormattedTime());
+        mRainSnow.setText(mCurrentWeather.getPrecipitation() + "%");
+        mHumidityLabel.setText(mCurrentWeather.getHumidity() + "%");
+        mSummaryLabel.setText(mCurrentWeather.getSummary() + " with a chance of meatballs");
+        mWeatherIcon.setImageResource(mCurrentWeather.getIconId());
     }
 
 
@@ -124,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
         String icon = currently.getString("icon");
         double temp = currently.getDouble("temperature");
         double humidity = currently.getDouble("humidity");
-        double precipitaiont = currently.getDouble("precipProbability");
+        int precipitaiont = currently.getInt("precipProbability");
 
         CurrentWeather currentWeather = new CurrentWeather();
         currentWeather.setTime(time);
