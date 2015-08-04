@@ -1,11 +1,13 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,9 +53,22 @@ public class MainActivity extends ActionBarActivity {
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
 
+        final double latitude = 18.01480;
+        final double longitude = 59.33259;
+
+        mRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getForecast(latitude, longitude);
+            }
+        });
+
+        getForecast(latitude, longitude);
+        Log.d(TAG, "Main UI code is running");
+    }
+
+    private void getForecast(double latitude, double longitude) {
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
-        double latitude = 18.01480;
-        double longitude = 59.33259;
         String forecastURL = "https://api.forecast.io/forecast/"
                 + APIKey + "/" + longitude + "," + latitude ;
 
@@ -104,8 +119,8 @@ public class MainActivity extends ActionBarActivity {
         else {
             alertUserAboutNoConnection();
         }
-        Log.d(TAG, "Main UI code is running");
     }
+
 
     private void updateDisplay() {
         mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
@@ -114,8 +129,8 @@ public class MainActivity extends ActionBarActivity {
         mHumidityLabel.setText(mCurrentWeather.getHumidity() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummary() + " with a chance of meatballs");
         mWeatherIcon.setImageResource(mCurrentWeather.getIconId());
-    }
 
+    }
 
     private CurrentWeather getCurrentDetails(String JsonData) throws JSONException {
         JSONObject forecast = new JSONObject(JsonData);
