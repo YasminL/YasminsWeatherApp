@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Call;
@@ -28,14 +29,27 @@ public class MainActivity extends ActionBarActivity {
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
     private CurrentWeather mCurrentWeather;
-    private String mTimeZone;
+    private TextView mTemperatureLabel;
+    private TextView mTimeLabel;
+    private TextView mTimeZone;
+    private ImageView mWeatherIcon;
+    private TextView mHumidityLabel;
+    private TextView mRainSnow;
+    private TextView mSummary;
+    private ImageView mRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final TextView timeZoneLabel = (TextView) findViewById(R.id.TimeZoneLabel);
+        mWeatherIcon = (ImageView) findViewById(R.id.weatherIconImage);
+        mTimeLabel = (TextView) findViewById(R.id.timeLabel);
+        mTimeZone = (TextView) findViewById(R.id.timeZoneLabel);
+        mTemperatureLabel = (TextView) findViewById(R.id.temperatureLabel);
+        mHumidityLabel = (TextView) findViewById(R.id.humidityValueLabel);
+        mRainSnow = (TextView) findViewById(R.id.precipValueLabel);
+        mSummary = (TextView) findViewById(R.id.summaryLabel);
+        mRefresh = (ImageView) findViewById(R.id.refreshImage);
 
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
         double latitude = 18.01480;
@@ -67,8 +81,12 @@ public class MainActivity extends ActionBarActivity {
                         Log.v(TAG, JsonData);
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(JsonData);
-                            mTimeZone = mCurrentWeather.getTimeZone();
-                            Log.i(TAG, "We are logging from JSON the timezone: " + mTimeZone);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateDisplay();
+                                }
+                            });
                         }
                         else {
                             alertUserAboutError();
@@ -87,8 +105,11 @@ public class MainActivity extends ActionBarActivity {
             alertUserAboutNoConnection();
         }
         Log.d(TAG, "Main UI code is running");
-        timeZoneLabel.setText(mTimeZone);
+    }
 
+    private void updateDisplay() {
+        mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
+        mTimeLabel.setText("@" + mCurrentWeather.getFormattedTime());
     }
 
 

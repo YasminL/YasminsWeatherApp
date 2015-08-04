@@ -87,7 +87,9 @@ public class CurrentWeather {
     }
 
     public double getTemperature() {
-        return mTemperature;
+        double temp = ((mTemperature - 32)*5)/9;
+        return Math.round(temp);
+
     }
 
     public void setTemperature(double temperature) {

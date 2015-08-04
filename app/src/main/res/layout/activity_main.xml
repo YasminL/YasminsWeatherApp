@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="150sp"
+        android:textSize="132sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -41,11 +41,11 @@
         android:textColor="#80ffffff"
         android:textSize="18sp"
         android:text="@string/Example_time"
-        android:layout_above="@+id/locationLabel"
+        android:layout_above="@+id/timeZoneLabel"
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/locationLabel"
+        android:id="@+id/timeZoneLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/City"
@@ -138,7 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cloudy with a chance of meatballs"
-        android:id="@+id/summary"
+        android:id="@+id/summaryLabel"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
