@@ -82,7 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/temperatureLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:orientation="vertical"
@@ -132,5 +133,17 @@
                 android:gravity="center_horizontal"/>
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cloudy with a chance of meatballs"
+        android:id="@+id/summary"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="#ffffffff"
+        android:textSize="18dp"
+        android:gravity="center_horizontal"/>
 
 </RelativeLayout>
