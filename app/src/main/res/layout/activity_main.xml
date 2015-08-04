@@ -41,7 +41,7 @@
         android:layout_alignTop="@+id/temperatureLabel"
         android:layout_toRightOf="@+id/temperatureLabel"
         android:layout_toEndOf="@+id/temperatureLabel"
-        android:layout_marginTop="29dp" />
+        android:layout_marginTop="50dp" />
 
 
 </RelativeLayout>
