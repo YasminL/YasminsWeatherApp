@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/temperatureLabel"
-        android:text="20"
+        android:text="--"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:textColor="#80ffffff"
         android:textSize="18sp"
-        android:text="@string/Example_time"
+        android:text="--"
         android:layout_above="@+id/timeZoneLabel"
         android:layout_centerHorizontal="true"/>
 
@@ -60,11 +60,10 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/cloudy"
         android:layout_alignTop="@+id/TimeZoneLabel"
-        android:layout_alignRight="@+id/timeLabel"
-        android:layout_alignEnd="@+id/timeLabel"
         android:layout_above="@+id/timeLabel"
-        android:layout_alignLeft="@+id/timeLabel"
-        android:layout_alignStart="@+id/timeLabel"/>
+        android:layout_toLeftOf="@+id/refreshImage"
+        android:layout_alignLeft="@+id/temperatureLabel"
+        android:layout_alignStart="@+id/temperatureLabel"/>
 
     <ImageView
         android:id="@+id/refreshImage"
@@ -102,7 +101,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12%"
+                android:text="-.-%"
                 android:id="@+id/humidityValueLabel"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
@@ -126,7 +125,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100%"
+                android:text="--%"
                 android:id="@+id/precipValueLabel"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
@@ -137,7 +136,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cloudy with a chance of meatballs"
+        android:text="---"
         android:id="@+id/summaryLabel"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
