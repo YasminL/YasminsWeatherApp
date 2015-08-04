@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView timeZone = (TextView) findViewById(R.id.TimeZoneLabel);
+        final TextView timeZoneLabel = (TextView) findViewById(R.id.TimeZoneLabel);
 
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
         double latitude = 18.01480;
@@ -69,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
                             mCurrentWeather = getCurrentDetails(JsonData);
                             mTimeZone = mCurrentWeather.getTimeZone();
                             Log.i(TAG, "We are logging from JSON the timezone: " + mTimeZone);
-                            timeZone.setText(mTimeZone);
                         }
                         else {
                             alertUserAboutError();
@@ -87,9 +86,11 @@ public class MainActivity extends ActionBarActivity {
         else {
             alertUserAboutNoConnection();
         }
-
         Log.d(TAG, "Main UI code is running");
+        timeZoneLabel.setText(mTimeZone);
+
     }
+
 
     private CurrentWeather getCurrentDetails(String JsonData) throws JSONException {
         JSONObject forecast = new JSONObject(JsonData);

@@ -11,6 +11,7 @@
     <string name="error_message_noInternetConnection">No internet connection avaliable</string>
     <string name="error_title_ohno">Oh no!</string>
     <string name="City">Stockholm</string>
+    <string name="Example_time">At 18:00</string>
 
 
 </resources>

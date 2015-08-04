@@ -33,15 +33,46 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/degreeImageView"
-        android:src="@mipmap/degree"
+        android:textColor="#80ffffff"
+        android:textSize="18sp"
+        android:text="@string/Example_time"
+        android:layout_above="@+id/locationLabel"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/City"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_above="@+id/temperatureLabel"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/weatherIconImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/cloudy"
+        android:layout_alignTop="@+id/TimeZoneLabel"
+        android:layout_alignRight="@+id/timeLabel"
+        android:layout_alignEnd="@+id/timeLabel"
+        android:layout_above="@+id/timeLabel"
+        android:layout_alignLeft="@+id/timeLabel"
+        android:layout_alignStart="@+id/timeLabel"/>
+
+    <ImageView
+        android:id="@+id/refreshImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/refresh"
         android:layout_alignTop="@+id/temperatureLabel"
         android:layout_toRightOf="@+id/temperatureLabel"
         android:layout_toEndOf="@+id/temperatureLabel"
         android:layout_marginTop="50dp" />
-
 
 </RelativeLayout>
