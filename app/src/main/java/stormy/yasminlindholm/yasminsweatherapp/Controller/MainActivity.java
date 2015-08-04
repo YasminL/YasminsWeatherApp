@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Call;
@@ -39,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mRainSnow;
     private TextView mSummaryLabel;
     private ImageView mRefresh;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,9 @@ public class MainActivity extends ActionBarActivity {
         mRainSnow = (TextView) findViewById(R.id.precipValueLabel);
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        mProgressBar.setVisibility(View.INVISIBLE);
 
         final double latitude = 18.01480;
         final double longitude = 59.33259;
@@ -73,9 +78,9 @@ public class MainActivity extends ActionBarActivity {
                 + APIKey + "/" + longitude + "," + latitude ;
 
         if (isNetworkAvaliable()) {
+            toggleRefresh();
 
             OkHttpClient client = new OkHttpClient();
-
             Request request = new Request.Builder()
                     .url(forecastURL)
                     .build();
@@ -86,10 +91,26 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onFailure(Request request, IOException e) {
                     Log.e(TAG, "Call failed");
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toggleRefresh();
+                        }
+                    });
+                    alertUserAboutError();
                 }
 
                 @Override
                 public void onResponse(Response response) throws IOException {
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toggleRefresh();
+                        }
+                    });
+
 
                     try {
                         String JsonData = response.body().string();
@@ -121,6 +142,17 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    private void toggleRefresh() {
+        if (mProgressBar.getVisibility() == View.INVISIBLE) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mRefresh.setVisibility(View.INVISIBLE);
+        }
+        else {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mRefresh.setVisibility(View.VISIBLE);
+        }
+    }
+
 
     private void updateDisplay() {
         mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
@@ -129,6 +161,7 @@ public class MainActivity extends ActionBarActivity {
         mHumidityLabel.setText(mCurrentWeather.getHumidity() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummary() + " with a chance of meatballs");
         mWeatherIcon.setImageResource(mCurrentWeather.getIconId());
+
 
     }
 

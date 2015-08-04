@@ -145,4 +145,14 @@
         android:textSize="18dp"
         android:gravity="center_horizontal"/>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignTop="@+id/refreshImage"
+        android:layout_alignBottom="@+id/refreshImage"
+        android:layout_toRightOf="@+id/temperatureLabel"
+        android:layout_alignRight="@+id/refreshImage"
+        android:layout_alignEnd="@+id/refreshImage"/>
+
 </RelativeLayout>
