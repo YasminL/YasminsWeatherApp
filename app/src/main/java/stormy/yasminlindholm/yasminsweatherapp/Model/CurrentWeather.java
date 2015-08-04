@@ -96,8 +96,10 @@ public class CurrentWeather {
         mTemperature = temperature;
     }
 
-    public double getHumidity() {
-        return Math.round(mHumidity*10.0)/10.0;
+    public int getHumidity() {
+        double humidity = mHumidity*100.0;
+        int humidityInt = (int) humidity;
+        return humidityInt;
     }
 
     public void setHumidity(double humidity) {
