@@ -36,8 +36,8 @@ public class MainActivity extends ActionBarActivity {
     private TextView mTimeLabel;
     private TextView mTimeZone;
     private ImageView mWeatherIcon;
-    private TextView mHumidityLabel;
-    private TextView mRainSnow;
+    private TextView mPrecipValueLabel;
+    private TextView mcloudCover;
     private TextView mSummaryLabel;
     private ImageView mRefresh;
     private ProgressBar mProgressBar;
@@ -50,8 +50,8 @@ public class MainActivity extends ActionBarActivity {
         mTimeLabel = (TextView) findViewById(R.id.timeLabel);
         mTimeZone = (TextView) findViewById(R.id.timeZoneLabel);
         mTemperatureLabel = (TextView) findViewById(R.id.temperatureLabel);
-        mHumidityLabel = (TextView) findViewById(R.id.humidityValueLabel);
-        mRainSnow = (TextView) findViewById(R.id.precipValueLabel);
+        mPrecipValueLabel = (TextView) findViewById(R.id.precipValueLabel);
+        mcloudCover = (TextView) findViewById(R.id.cloudCoverValueLabel);
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -157,8 +157,8 @@ public class MainActivity extends ActionBarActivity {
     private void updateDisplay() {
         mTemperatureLabel.setText(mCurrentWeather.getTemperature() + "");
         mTimeLabel.setText("@" + mCurrentWeather.getFormattedTime());
-        mRainSnow.setText(mCurrentWeather.getPrecipitation() + "%");
-        mHumidityLabel.setText(mCurrentWeather.getHumidity() + "%");
+        mcloudCover.setText(mCurrentWeather.getCloudCover() + "%");
+        mPrecipValueLabel.setText(mCurrentWeather.getPrecip() + "%");
         mSummaryLabel.setText(mCurrentWeather.getSummary() + " with a chance of meatballs");
         mWeatherIcon.setImageResource(mCurrentWeather.getIconId());
 
@@ -176,15 +176,17 @@ public class MainActivity extends ActionBarActivity {
         String icon = currently.getString("icon");
         double temp = currently.getDouble("temperature");
         double humidity = currently.getDouble("humidity");
-        int precipitaiont = currently.getInt("precipProbability");
+        double cloudCover = currently.getDouble("cloudCover");
+
+        Log.i(TAG, "From JSON, cloudcover is: " + cloudCover);
 
         CurrentWeather currentWeather = new CurrentWeather();
         currentWeather.setTime(time);
         currentWeather.setSummary(summary);
         currentWeather.setIcon(icon);
         currentWeather.setTemperature(temp);
-        currentWeather.setPrecipitation(precipitaiont);
-        currentWeather.setHumidity(humidity);
+        currentWeather.setCloudCover(cloudCover);
+        currentWeather.setPrecip(humidity);
         currentWeather.setTimeZone(timezone);
 
         Log.d(TAG, currentWeather.getFormattedTime());

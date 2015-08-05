@@ -93,16 +93,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HUMIDITY"
-                android:id="@+id/humidityLabel"
+                android:text="RAIN/SNOW"
+                android:id="@+id/precipLabel"
                 android:textColor="#80ffffff"
                 android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-.-%"
-                android:id="@+id/humidityValueLabel"
+                android:text="--%"
+                android:id="@+id/precipValueLabel"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
                 android:gravity="center_horizontal"/>
@@ -117,8 +117,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RAIN/SNOW"
-                android:id="@+id/precipLabel"
+                android:text="CLOUD COVER"
+                android:id="@+id/cloudCoverLabel"
                 android:textColor="#80ffffff"
                 android:gravity="center_horizontal"/>
 
@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="--%"
-                android:id="@+id/precipValueLabel"
+                android:id="@+id/cloudCoverValueLabel"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
                 android:gravity="center_horizontal"/>
