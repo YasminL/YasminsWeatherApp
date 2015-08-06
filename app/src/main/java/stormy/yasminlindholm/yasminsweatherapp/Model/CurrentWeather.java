@@ -14,7 +14,7 @@ public class CurrentWeather {
     private long mTime;
     private String mTimeZone;
     private double mTemperature;
-    private double mPrecip;
+    private double mHumidity;
     private double mCloudCover;
     private String mSummary;
 
@@ -96,14 +96,14 @@ public class CurrentWeather {
         mTemperature = temperature;
     }
 
-    public int getPrecip() {
-        double precip = mPrecip*100.0;
+    public int getHumidity() {
+        double precip = mHumidity *100.0;
         int precipInt = (int) precip;
         return precipInt;
     }
 
-    public void setPrecip (double precip) {
-        mPrecip = precip;
+    public void setHumidity(double humidity) {
+        mHumidity = humidity;
     }
 
     public int getCloudCover() {

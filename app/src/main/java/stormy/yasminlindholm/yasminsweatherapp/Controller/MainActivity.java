@@ -1,7 +1,6 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -40,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mTimeLabel;
     private TextView mTimeZone;
     private ImageView mWeatherIcon;
-    private TextView mPrecipValueLabel;
+    private TextView mHumidityValueLabel;
     private TextView mcloudCover;
     private TextView mSummaryLabel;
     private ImageView mRefresh;
@@ -54,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         mTimeLabel = (TextView) findViewById(R.id.timeLabel);
         mTimeZone = (TextView) findViewById(R.id.timeZoneLabel);
         mTemperatureLabel = (TextView) findViewById(R.id.temperatureLabel);
-        mPrecipValueLabel = (TextView) findViewById(R.id.precipValueLabel);
+        mHumidityValueLabel = (TextView) findViewById(R.id.humidityValueLabel);
         mcloudCover = (TextView) findViewById(R.id.cloudCoverValueLabel);
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
@@ -154,12 +153,11 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
     private void updateDisplay() {
         mTemperatureLabel.setText(mForecast.getCurrentWeather().getTemperature() + "");
         mTimeLabel.setText("@" + mForecast.getCurrentWeather().getFormattedTime());
         mcloudCover.setText(mForecast.getCurrentWeather().getCloudCover() + "%");
-        mPrecipValueLabel.setText(mForecast.getCurrentWeather().getPrecip() + "%");
+        mHumidityValueLabel.setText(mForecast.getCurrentWeather().getHumidity() + "%");
         mSummaryLabel.setText(mForecast.getCurrentWeather().getSummary() + " with a chance of meatballs");
         mWeatherIcon.setImageResource(mForecast.getCurrentWeather().getIconId());
     }
@@ -173,7 +171,27 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private DailyWeather[] getDailyDetails(String jsonData) throws JSONException {
-        return null;
+        JSONObject forecast = new JSONObject(jsonData);
+        String timeZone = forecast.getString("timezone");
+        JSONObject daily = forecast.getJSONObject("daily");
+        JSONArray data = daily.getJSONArray("data");
+
+        DailyWeather[] dailyWeathers = new DailyWeather[data.length()];
+
+        for (int i = 0; i < data.length();i ++) {
+            JSONObject jsonDaily = data.getJSONObject(i);
+            DailyWeather dailyWeather = new DailyWeather();
+
+            dailyWeather.setSummary(jsonDaily.getString("summary"));
+            dailyWeather.setTempMin(jsonDaily.getLong("temperature"));
+            dailyWeather.setTime(jsonDaily.getLong("time"));
+            dailyWeather.setIcon(jsonDaily.getString("icon"));
+            dailyWeather.setTimeZone(timeZone);
+
+            dailyWeathers[i] = dailyWeather;
+        }
+            return dailyWeathers;
+
         }
 
     private HourlyWeather[] getHourlyDetails(String jsonData) throws JSONException{
@@ -203,23 +221,16 @@ public class MainActivity extends ActionBarActivity {
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException {
         JSONObject forecast = new JSONObject(jsonData);
         String timezone = forecast.getString("timezone");
-        Log.i(TAG, "From JSON: " + timezone);
+        CurrentWeather currentWeather = new CurrentWeather();
 
         JSONObject currently = forecast.getJSONObject("currently");
-        long time = currently.getLong("time");
-        String summary = currently.getString("summary");
-        String icon = currently.getString("icon");
-        double temp = currently.getDouble("temperature");
-        double humidity = currently.getDouble("humidity");
-        double cloudCover = currently.getDouble("cloudCover");
 
-        CurrentWeather currentWeather = new CurrentWeather();
-        currentWeather.setTime(time);
-        currentWeather.setSummary(summary);
-        currentWeather.setIcon(icon);
-        currentWeather.setTemperature(temp);
-        currentWeather.setCloudCover(cloudCover);
-        currentWeather.setPrecip(humidity);
+        currentWeather.setTime(currently.getLong("time"));
+        currentWeather.setSummary(currently.getString("summary"));
+        currentWeather.setIcon(currently.getString("icon"));
+        currentWeather.setTemperature(currently.getDouble("temperature"));
+        currentWeather.setCloudCover(currently.getDouble("cloudCover"));
+        currentWeather.setHumidity(currently.getDouble("humidity"));
         currentWeather.setTimeZone(timezone);
 
         Log.d(TAG, currentWeather.getFormattedTime());
