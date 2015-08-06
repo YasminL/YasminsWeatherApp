@@ -1,12 +1,14 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mSummaryLabel;
     private ImageView mRefresh;
     private ProgressBar mProgressBar;
+    private Button mDailyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,7 @@ public class MainActivity extends ActionBarActivity {
         mSummaryLabel = (TextView) findViewById(R.id.summaryLabel);
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mDailyButton = (Button) findViewById(R.id.dailyButton);
 
         mProgressBar.setVisibility(View.INVISIBLE);
 
@@ -73,6 +77,21 @@ public class MainActivity extends ActionBarActivity {
 
         getForecast(latitude, longitude);
         Log.d(TAG, "Main UI code is running");
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startDailyForecastActivity();
+
+            }
+        };
+        mDailyButton.setOnClickListener(listener);
+    }
+
+    private void startDailyForecastActivity() {
+        Intent intent = new Intent(MainActivity.this, DailyForecastActivity.class);
+        startActivity(intent);
+
     }
 
     private void getForecast(double latitude, double longitude) {
