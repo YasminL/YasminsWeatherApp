@@ -166,7 +166,7 @@ public class MainActivity extends ActionBarActivity {
         Forecast forecast = new Forecast();
         forecast.setCurrentWeather(getCurrentDetails(jsonData));
         forecast.setHourlyWeather(getHourlyDetails(jsonData));
-        //forecast.getDailyWeather(getDailyDetails(jsonData));
+        forecast.setDailyWeather(getDailyDetails(jsonData));
         return forecast;
     }
 
@@ -183,7 +183,7 @@ public class MainActivity extends ActionBarActivity {
             DailyWeather dailyWeather = new DailyWeather();
 
             dailyWeather.setSummary(jsonDaily.getString("summary"));
-            dailyWeather.setTempMin(jsonDaily.getLong("temperature"));
+            dailyWeather.setTempMin(jsonDaily.getLong("temperatureMin"));
             dailyWeather.setTime(jsonDaily.getLong("time"));
             dailyWeather.setIcon(jsonDaily.getString("icon"));
             dailyWeather.setTimeZone(timeZone);
