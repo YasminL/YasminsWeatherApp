@@ -3,6 +3,53 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/padding_64dp"
+                android:paddingRight="@dimen/padding_32dp"
+                android:paddingTop="@dimen/padding_4dp"
+                android:paddingBottom="@dimen/padding_4dp"
                 tools:background="#AEC6CF">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/circleImageView"
+        android:src="@mipmap/bg_temperature"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconImageView"
+        android:src="@mipmap/clear_day"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/padding_10dp"
+        android:layout_toRightOf="@+id/circleImageView"
+        android:layout_toEndOf="@+id/circleImageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dayNameLabel"
+        android:textColor="#ffffffff"
+        android:paddingLeft="@dimen/padding_10dp"
+        android:textSize="20sp"
+        tools:text="Wednesday"
+        android:layout_toRightOf="@+id/iconImageView"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tempLabel"
+        android:textColor="#FFB347"
+        tools:text="20.8"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/circleImageView"
+        android:layout_alignLeft="@+id/circleImageView"
+        android:layout_alignRight="@+id/circleImageView"
+        android:layout_alignTop="@+id/circleImageView"/>
 </RelativeLayout>

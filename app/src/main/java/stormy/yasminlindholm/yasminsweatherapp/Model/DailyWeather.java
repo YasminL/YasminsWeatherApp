@@ -45,48 +45,18 @@ public class DailyWeather {
     }
 
     public int getIconId() {
-        int iconId = R.mipmap.clear_day;
-
-        if (mIcon.equals("clear-day")) {
-            iconId = R.mipmap.clear_day;
-        }
-        else if (mIcon.equals("clear-night")) {
-            iconId = R.mipmap.clear_night;
-        }
-        else if (mIcon.equals("rain")) {
-            iconId = R.mipmap.rain;
-        }
-        else if (mIcon.equals("snow")) {
-            iconId = R.mipmap.snow;
-        }
-        else if (mIcon.equals("sleet")) {
-            iconId = R.mipmap.sleet;
-        }
-        else if (mIcon.equals("wind")) {
-            iconId = R.mipmap.wind;
-        }
-        else if (mIcon.equals("fog")) {
-            iconId = R.mipmap.fog;
-        }
-        else if (mIcon.equals("cloudy")) {
-            iconId = R.mipmap.cloudy;
-        }
-        else if (mIcon.equals("partly-cloudy-day")) {
-            iconId = R.mipmap.partly_cloudy;
-        }
-        else if (mIcon.equals("partly-cloudy-night")) {
-            iconId = R.mipmap.cloudy_night;
-        }
-        return iconId;
+        return Forecast.getIconId(mIcon);
     }
 
     public void setIcon(String icon) {
         mIcon = icon;
     }
 
-    public double getTempMin() {
+    public int getTempMin() {
         double temp = ((mTempMin - 32)*5)/9;
-        return Math.round(temp*10.0)/10.0;
+        double tempOneDec = Math.round(temp*10.0)/10.0;
+        int tempInt = (int) tempOneDec;
+        return tempInt;
     }
 
     public void setTempMin(double temp) {
@@ -99,5 +69,14 @@ public class DailyWeather {
 
     public void setSummary(String summary) {
         mSummary = summary;
+    }
+
+    public String getDaysOfWeek() {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
+        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
+
+        Date dateTime = new Date(mTime * 1000);
+        return formatter.format(dateTime);
+
     }
 }
