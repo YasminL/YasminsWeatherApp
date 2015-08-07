@@ -44,12 +44,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tempLabel"
-        android:textColor="#FFB347"
+        android:textColor="#AEC6CF"
         tools:text="20.8"
         android:singleLine="true"
         android:gravity="center"
         android:layout_alignBottom="@+id/circleImageView"
         android:layout_alignLeft="@+id/circleImageView"
         android:layout_alignRight="@+id/circleImageView"
-        android:layout_alignTop="@+id/circleImageView"/>
+        android:layout_alignTop="@+id/circleImageView"
+        android:autoText="false"
+        android:textStyle="bold"
+        />
 </RelativeLayout>

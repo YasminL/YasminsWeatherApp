@@ -34,6 +34,8 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
 public class MainActivity extends ActionBarActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String DAILY_FORECAST = "DAILY FORECAST";
+
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
     private Forecast mForecast;
@@ -90,6 +92,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void startDailyForecastActivity() {
         Intent intent = new Intent(MainActivity.this, DailyForecastActivity.class);
+        intent.putExtra(DAILY_FORECAST, mForecast.getDailyWeather());
         startActivity(intent);
 
     }

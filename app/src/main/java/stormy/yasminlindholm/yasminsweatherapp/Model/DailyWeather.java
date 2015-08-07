@@ -1,5 +1,8 @@
 package stormy.yasminlindholm.yasminsweatherapp.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -9,12 +12,14 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
 /**
  * Created by yasmin.lindholm on 2015-08-05.
  */
-public class DailyWeather {
+public class DailyWeather implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mTempMin;
     private String mIcon;
     private String mTimeZone;
+
+    public DailyWeather() {}
 
     public long getTime() {
         return mTime;
@@ -79,4 +84,40 @@ public class DailyWeather {
         return formatter.format(dateTime);
 
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeLong(mTime);
+        out.writeString(mSummary);
+        out.writeDouble(mTempMin);
+        out.writeString(mIcon);
+        out.writeString(mTimeZone);
+    }
+
+    private DailyWeather(Parcel in) {
+        mTime = in.readLong();
+        mSummary = in.readString();
+        mTempMin = in.readDouble();
+        mIcon = in.readString();
+        mTimeZone = in.readString();
+    }
+
+    public static final Creator<DailyWeather> CREATOR
+            = new Creator<DailyWeather>() {
+
+        @Override
+        public DailyWeather createFromParcel(Parcel source) {
+            return new DailyWeather(source);
+        }
+
+        @Override
+        public DailyWeather[] newArray(int size) {
+            return new DailyWeather[size];
+        }
+    };
 }
