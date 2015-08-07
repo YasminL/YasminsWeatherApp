@@ -82,7 +82,6 @@ public class DailyWeather implements Parcelable {
 
         Date dateTime = new Date(mTime * 1000);
         return formatter.format(dateTime);
-
     }
 
     @Override
