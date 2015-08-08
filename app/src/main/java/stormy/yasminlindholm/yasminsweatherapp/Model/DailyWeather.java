@@ -2,9 +2,11 @@ package stormy.yasminlindholm.yasminsweatherapp.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
@@ -13,6 +15,8 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
  * Created by yasmin.lindholm on 2015-08-05.
  */
 public class DailyWeather implements Parcelable {
+
+    private static final String TAG = DailyWeather.class.getSimpleName();
     private long mTime;
     private String mSummary;
     private double mTempMin;
@@ -77,11 +81,17 @@ public class DailyWeather implements Parcelable {
     }
 
     public String getDaysOfWeek() {
-        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
-        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
-
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE", Locale.ENGLISH);
+        TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
+        formatter.setTimeZone(timeZone);
         Date dateTime = new Date(mTime * 1000);
-        return formatter.format(dateTime);
+        //Log.i(TAG, "dateTime is: " + dateTime);
+        //dateTime is: Fri Aug 14 00:00:00 CEST 2015
+
+        String dayOfWeek = formatter.format(dateTime);
+        Log.i(TAG, "dayOfWeek is: " + dayOfWeek);
+
+        return dayOfWeek;
     }
 
     @Override

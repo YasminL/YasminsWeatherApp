@@ -10,7 +10,7 @@
     <string name="error_OK_buttonText">OK</string>
     <string name="error_message_noInternetConnection">No internet connection avaliable</string>
     <string name="error_title_ohno">Oh no!</string>
-    <string name="City">The Rasmins</string>
+    <string name="City">Creutzgatan</string>
     <string name="Example_time">At 18:00</string>
     <string name="title_activity_daily_forecast">DailyForecastActivity</string>
 
