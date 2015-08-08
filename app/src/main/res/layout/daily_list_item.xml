@@ -15,9 +15,10 @@
         android:id="@+id/iconImageView"
         android:src="@mipmap/clear_day"
         android:layout_centerVertical="true"
-        android:paddingLeft="@dimen/padding_10dp"
-        android:layout_toRightOf="@+id/degreeImageView"
-        android:layout_toEndOf="@+id/tempLabel"/>
+        android:paddingLeft="35dp"
+        android:layout_toEndOf="@+id/tempLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
