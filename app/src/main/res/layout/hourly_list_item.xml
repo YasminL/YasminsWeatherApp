@@ -3,8 +3,8 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding_34dp"
-                android:paddingRight="@dimen/padding_5dp"
+                android:paddingLeft="@dimen/padding_15dp"
+                android:paddingRight="@dimen/padding_15dp"
                 android:paddingTop="@dimen/padding_4dp"
                 android:paddingBottom="@dimen/padding_4dp"
                 tools:background="#AEC6CF">
@@ -24,9 +24,9 @@
         android:id="@+id/iconImageHour"
         android:src="@mipmap/cloudy_night"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/hourLabel"
-        android:paddingLeft="@dimen/padding_15dp"
-        />
+        android:paddingLeft="65dp"
+        android:layout_alignLeft="@+id/hourLabel"
+        android:layout_alignStart="@+id/hourLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,18 +45,17 @@
         android:layout_height="wrap_content"
         tools:text="24"
         android:id="@+id/tempLabelHour"
-        android:paddingLeft="@dimen/padding_15dp"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
         android:textColor="#ffffffff"
-        android:layout_toRightOf="@+id/summaryLabelHour"
+        android:layout_toLeftOf="@+id/degreeImage"
         />
 
     <ImageView
         android:layout_width="@dimen/padding_5dp"
         android:layout_height="@dimen/padding_5dp"
         android:id="@+id/degreeImage"
-        android:layout_toRightOf="@+id/tempLabelHour"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/padding_10dp"
         android:src="@mipmap/degree"
         />
