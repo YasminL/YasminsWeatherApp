@@ -2,9 +2,11 @@ package stormy.yasminlindholm.yasminsweatherapp.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
@@ -57,9 +59,10 @@ public class HourlyWeather implements Parcelable {
         mIcon = icon;
     }
 
-    public double getTemp() {
+    public int getTemp() {
         double temp = ((mTemp - 32)*5)/9;
-        return Math.round(temp*10.0)/10.0;
+        int tempInt = (int) temp;
+        return tempInt;
     }
 
     public void setTemp(double temp) {
@@ -72,6 +75,17 @@ public class HourlyWeather implements Parcelable {
 
     public void setSummary(String summary) {
         mSummary = summary;
+    }
+
+    public String getHoursOfDay() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h a", Locale.ENGLISH);
+        //TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
+        //formatter.setTimeZone(timeZone);
+        Date dateTime = new Date(mTime * 1000);
+        //Log.i(TAG, "dateTime is: " + dateTime);
+        //dateTime is: Fri Aug 14 00:00:00 CEST 2015
+        String hourOfDay = formatter.format(dateTime);
+        return hourOfDay;
     }
 
     @Override
