@@ -80,7 +80,7 @@ public class HourlyWeather implements Parcelable {
     } */
 
     public String getHoursOfDay() {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("EE " +"@" + "HH:mm", Locale.ENGLISH);
         TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
         formatter.setTimeZone(timeZone);
         Date dateTime = new Date(mTime * 1000);

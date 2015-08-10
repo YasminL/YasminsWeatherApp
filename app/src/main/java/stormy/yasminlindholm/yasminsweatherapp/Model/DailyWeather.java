@@ -20,6 +20,7 @@ public class DailyWeather implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mTempMin;
+    private double mTempMax;
     private String mIcon;
     private String mTimeZone;
 
@@ -68,8 +69,19 @@ public class DailyWeather implements Parcelable {
         return tempInt;
     }
 
+    public int getTempMax() {
+        double temp = ((mTempMax - 32)*5)/9;
+        double tempOneDec = Math.round(temp*10.0)/10.0;
+        int tempInt = (int) tempOneDec;
+        return tempInt;
+    }
+
     public void setTempMin(double temp) {
         mTempMin = temp;
+    }
+
+    public void setTempMax(double tempMax) {
+        mTempMax = tempMax;
     }
 
     public String getSummary() {
@@ -104,6 +116,7 @@ public class DailyWeather implements Parcelable {
         out.writeLong(mTime);
         out.writeString(mSummary);
         out.writeDouble(mTempMin);
+        out.writeDouble(mTempMax);
         out.writeString(mIcon);
         out.writeString(mTimeZone);
     }
@@ -112,6 +125,7 @@ public class DailyWeather implements Parcelable {
         mTime = in.readLong();
         mSummary = in.readString();
         mTempMin = in.readDouble();
+        mTempMax = in.readDouble();
         mIcon = in.readString();
         mTimeZone = in.readString();
     }

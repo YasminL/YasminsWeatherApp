@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="66dp"
+                android:paddingLeft="54dp"
                 android:paddingRight="@dimen/padding_32dp"
                 android:paddingTop="@dimen/padding_4dp"
                 android:paddingBottom="@dimen/padding_4dp"
@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="At17:00"
+        tools:text="Mon At17:00"
         android:id="@+id/hourLabel"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
@@ -23,10 +23,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/iconImageHour"
         android:src="@mipmap/cloudy_night"
-        android:paddingLeft="@dimen/padding_34dp"
+        android:paddingLeft="130dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/hourLabel"
-        android:layout_toEndOf="@+id/hourLabel"/>
+        android:layout_toEndOf="@+id/hourLabel"
+        android:layout_alignLeft="@+id/hourLabel"
+        android:layout_alignStart="@+id/hourLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
         android:id="@+id/tempLabelHour"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
-        android:paddingLeft="@dimen/padding_34dp"
+        android:paddingLeft="@dimen/padding_15dp"
         android:textColor="#ffffffff"
         android:layout_toRightOf="@+id/iconImageHour"
         />
