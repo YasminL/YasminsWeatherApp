@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import stormy.yasminlindholm.yasminsweatherapp.Model.HourlyWeather;
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
@@ -46,23 +48,23 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
 
         public TextView mTimeLabel;
         public ImageView mIconLabel;
-        //public TextView mSummaryLabel;
         public TextView mTempLabel;
+        public TextView mDayNameLabel;
 
         public HourViewHolder(View itemView) {
             super(itemView);
 
             mTimeLabel = (TextView) itemView.findViewById(R.id.hourLabel);
             mIconLabel = (ImageView) itemView.findViewById(R.id.iconImageHour);
-            //mSummaryLabel = (TextView) itemView.findViewById(R.id.summaryLabelHour);
             mTempLabel = (TextView) itemView.findViewById(R.id.tempLabelHour);
+            mDayNameLabel = (TextView) itemView.findViewById(R.id.dayNameLabelHour);
         }
 
         public void bindHour(HourlyWeather hourWeather) {
             mTimeLabel.setText(hourWeather.getHoursOfDay());
             mIconLabel.setImageResource(hourWeather.getIconId());
-            //mSummaryLabel.setText(hourWeather.getSummary());
             mTempLabel.setText(hourWeather.getTemp() + "");
+            mDayNameLabel.setText(hourWeather.getDayName());
         }
 
 }

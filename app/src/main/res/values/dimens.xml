@@ -11,4 +11,5 @@
     <dimen name="padding_34dp">34dp</dimen>
     <dimen name="textSixe_20sp">20sp</dimen>
     <dimen name="padding_15dp">15dp</dimen>
+    <dimen name="padding_60dp">60dp</dimen>
 </resources>
