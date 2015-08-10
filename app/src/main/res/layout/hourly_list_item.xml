@@ -3,65 +3,61 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding_64dp"
-                android:paddingRight="@dimen/padding_32dp"
+                android:paddingLeft="@dimen/padding_34dp"
+                android:paddingRight="@dimen/padding_5dp"
                 android:paddingTop="@dimen/padding_4dp"
                 android:paddingBottom="@dimen/padding_4dp"
                 tools:background="#AEC6CF">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="17:00"
+        android:id="@+id/hourLabel"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/textSixe_20sp"
+        android:textColor="#ffffffff"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/iconImageView"
-        android:src="@mipmap/clear_day"
-        android:paddingLeft="35dp"
+        android:id="@+id/iconImage"
+        android:src="@mipmap/cloudy_night"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/hourLabel"
-        android:layout_toEndOf="@+id/hourLabel"/>
+        android:paddingLeft="@dimen/padding_15dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/hourLabel"
+        tools:text="Partly Cloudy"
         android:textColor="#ffffffff"
-        android:paddingLeft="@dimen/padding_10dp"
-        android:textSize="20sp"
-        tools:text="18:00"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:textSize="@dimen/textSixe_20sp"
+        android:paddingLeft="@dimen/padding_15dp"
+        android:id="@+id/summaryLabel"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iconImage"
+        android:layout_toEndOf="@+id/iconImage"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        tools:text="24"
         android:id="@+id/tempLabel"
-        android:textColor="#ffffff"
-        tools:text="20"
-        android:singleLine="true"
-        android:autoText="false"
-        android:textSize="20sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:paddingLeft="@dimen/padding_15dp"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/textSixe_20sp"
+        android:textColor="#ffffffff"
+        android:layout_toRightOf="@+id/summaryLabel"
+        />
 
     <ImageView
         android:layout_width="@dimen/padding_5dp"
         android:layout_height="@dimen/padding_5dp"
-        android:id="@+id/degreeImageView"
-        android:src="@mipmap/degree"
-        android:layout_alignTop="@+id/tempLabel"
-        android:layout_marginTop="@dimen/padding_10dp"
+        android:id="@+id/degreeImage"
         android:layout_toRightOf="@+id/tempLabel"
-        android:layout_toEndOf="@+id/tempLabel"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Cloudy"
-        android:id="@+id/summaryLabel"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/iconImageView"
-        android:layout_toEndOf="@+id/iconImageView"/>
+        android:layout_marginTop="@dimen/padding_10dp"
+        android:src="@mipmap/degree"
+        />
 </RelativeLayout>

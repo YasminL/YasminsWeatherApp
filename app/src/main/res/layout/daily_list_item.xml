@@ -26,7 +26,7 @@
         android:id="@+id/dayNameLabel"
         android:textColor="#ffffffff"
         android:paddingLeft="@dimen/padding_10dp"
-        android:textSize="20sp"
+        android:textSize="@dimen/textSixe_20sp"
         tools:text="Wednesday"
         android:layout_toRightOf="@+id/iconImageView"
         android:layout_centerVertical="true"/>
@@ -36,10 +36,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/tempLabel"
         android:textColor="#ffffff"
-        tools:text="20"
         android:singleLine="true"
         android:autoText="false"
-        android:textSize="20sp"
+        tools:text="20"
+        android:textSize="@dimen/textSixe_20sp"
         android:layout_centerVertical="true"/>
 
     <ImageView

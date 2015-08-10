@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import java.util.Arrays;
 
+import stormy.yasminlindholm.yasminsweatherapp.Adapters.DayAdapter;
 import stormy.yasminlindholm.yasminsweatherapp.Model.HourlyWeather;
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
@@ -24,13 +25,17 @@ public class HourlyForecastActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hourly_forecast);
 
-        /* Intent intent = getIntent();
+        Intent intent = getIntent();
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.HOURLY_FORECAST);
         mHourlyWeather = Arrays.copyOf(parcelables, parcelables.length, HourlyWeather[].class);
-        Log.i(TAG, "Logging Hourly Parc which is: " + mHourlyWeather); */
+        Log.i(TAG, "Logging Hourly Parc which is: " + mHourlyWeather);
+
+        /* DayAdapter adapter = new DayAdapter(DailyForecastActivity.this, mDailyWeather);
+        setListAdapter(adapter); */
+    }
 
     }
 
 
 
-}
+

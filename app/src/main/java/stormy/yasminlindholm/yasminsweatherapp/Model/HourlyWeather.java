@@ -1,5 +1,8 @@
 package stormy.yasminlindholm.yasminsweatherapp.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -9,12 +12,14 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
 /**
  * Created by yasmin.lindholm on 2015-08-05.
  */
-public class HourlyWeather {
+public class HourlyWeather implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mTemp;
     private String mIcon;
     private String mTimeZone;
+
+    public HourlyWeather() {}
 
     public long getTime() {
         return mTime;
@@ -68,4 +73,40 @@ public class HourlyWeather {
     public void setSummary(String summary) {
         mSummary = summary;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeLong(mTime);
+        out.writeString(mSummary);
+        out.writeDouble(mTemp);
+        out.writeString(mIcon);
+        out.writeString(mTimeZone);
+    }
+
+    private HourlyWeather(Parcel in) {
+        mTime = in.readLong();
+        mSummary = in.readString();
+        mTemp = in.readDouble();
+        mIcon = in.readString();
+        mTimeZone = in.readString();
+    }
+
+    public static final Creator<HourlyWeather> CREATOR = new Creator<HourlyWeather>() {
+
+        @Override
+        public HourlyWeather createFromParcel(Parcel source) {
+            return new HourlyWeather(source);
+        }
+
+        @Override
+        public HourlyWeather[] newArray(int size) {
+            return new HourlyWeather[size];
+        }
+    };
+
 }

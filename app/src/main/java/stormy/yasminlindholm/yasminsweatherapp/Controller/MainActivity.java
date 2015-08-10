@@ -102,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void startHourlyForecastActivity() {
         Intent intent = new Intent(MainActivity.this, HourlyForecastActivity.class);
-        // intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyWeather());
+        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyWeather());
         startActivity(intent);
     }
 
