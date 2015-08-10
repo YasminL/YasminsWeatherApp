@@ -15,6 +15,8 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
  * Created by yasmin.lindholm on 2015-08-05.
  */
 public class HourlyWeather implements Parcelable {
+
+    private static final String TAG = HourlyWeather.class.getSimpleName();
     private long mTime;
     private String mSummary;
     private double mTemp;
@@ -78,12 +80,11 @@ public class HourlyWeather implements Parcelable {
     }
 
     public String getHoursOfDay() {
-        SimpleDateFormat formatter = new SimpleDateFormat("h a", Locale.ENGLISH);
-        //TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
-        //formatter.setTimeZone(timeZone);
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
+        formatter.setTimeZone(timeZone);
         Date dateTime = new Date(mTime * 1000);
-        //Log.i(TAG, "dateTime is: " + dateTime);
-        //dateTime is: Fri Aug 14 00:00:00 CEST 2015
+        Log.i(TAG, "dateTime is: " + dateTime);
         String hourOfDay = formatter.format(dateTime);
         return hourOfDay;
     }
