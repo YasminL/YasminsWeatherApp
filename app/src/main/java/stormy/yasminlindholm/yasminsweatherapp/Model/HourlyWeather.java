@@ -80,11 +80,10 @@ public class HourlyWeather implements Parcelable {
     }
 
     public String getHoursOfDay() {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH");
         TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
         formatter.setTimeZone(timeZone);
         Date dateTime = new Date(mTime * 1000);
-        Log.i(TAG, "dateTime is: " + dateTime);
         String hourOfDay = formatter.format(dateTime);
         return hourOfDay;
     }

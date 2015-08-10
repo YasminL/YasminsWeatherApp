@@ -59,7 +59,7 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
         }
 
         public void bindHour(HourlyWeather hourWeather) {
-            mTimeLabel.setText(hourWeather.getHoursOfDay());
+            mTimeLabel.setText("@" + hourWeather.getHoursOfDay());
             mIconLabel.setImageResource(hourWeather.getIconId());
             mSummaryLabel.setText(hourWeather.getSummary());
             mTempLabel.setText(hourWeather.getTemp() + "");
