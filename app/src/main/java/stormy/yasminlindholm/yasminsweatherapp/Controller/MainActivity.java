@@ -35,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAILY_FORECAST = "DAILY FORECAST";
+    public static final String HOURLY_FORECAST = "HOURLY FORECAST";
 
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
@@ -49,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
     private ImageView mRefresh;
     private ProgressBar mProgressBar;
     private Button mDailyButton;
+    private Button mHourlyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +66,13 @@ public class MainActivity extends ActionBarActivity {
         mRefresh = (ImageView) findViewById(R.id.refreshImage);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mDailyButton = (Button) findViewById(R.id.dailyButton);
+        mHourlyButton = (Button) findViewById(R.id.hourlyButton);
 
         mProgressBar.setVisibility(View.INVISIBLE);
 
         final double latitude = 18.01480;
         final double longitude = 59.33259;
+
 
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,17 +81,29 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        mHourlyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startHourlyForecastActivity();
+            }
+        });
+
         getForecast(latitude, longitude);
         Log.d(TAG, "Main UI code is running");
 
-        View.OnClickListener listener = new View.OnClickListener() {
+        mDailyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startDailyForecastActivity();
 
             }
-        };
-        mDailyButton.setOnClickListener(listener);
+        });
+    }
+
+    private void startHourlyForecastActivity() {
+        Intent intent = new Intent(MainActivity.this, HourlyForecastActivity.class);
+        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyWeather());
+        startActivity(intent);
     }
 
     private void startDailyForecastActivity() {
