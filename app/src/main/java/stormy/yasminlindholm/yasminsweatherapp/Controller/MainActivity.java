@@ -244,7 +244,7 @@ public class MainActivity extends ActionBarActivity {
             JSONObject jsonHour = hourlyData.getJSONObject(i);
             HourlyWeather hourlyWeather = new HourlyWeather();
 
-            hourlyWeather.setSummary(jsonHour.getString("summary"));
+            //hourlyWeather.setSummary(jsonHour.getString("summary"));
             hourlyWeather.setTemp(jsonHour.getDouble("temperature"));
             hourlyWeather.setIcon(jsonHour.getString("icon"));
             hourlyWeather.setTime(jsonHour.getLong("time"));

@@ -3,8 +3,8 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding_15dp"
-                android:paddingRight="@dimen/padding_15dp"
+                android:paddingLeft="66dp"
+                android:paddingRight="@dimen/padding_32dp"
                 android:paddingTop="@dimen/padding_4dp"
                 android:paddingBottom="@dimen/padding_4dp"
                 tools:background="#AEC6CF">
@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="17:00"
+        tools:text="At17:00"
         android:id="@+id/hourLabel"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
@@ -23,22 +23,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/iconImageHour"
         android:src="@mipmap/cloudy_night"
+        android:paddingLeft="@dimen/padding_34dp"
         android:layout_alignParentTop="true"
-        android:paddingLeft="65dp"
-        android:layout_alignLeft="@+id/hourLabel"
-        android:layout_alignStart="@+id/hourLabel"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Partly Cloudy"
-        android:textColor="#ffffffff"
-        android:textSize="@dimen/textSixe_20sp"
-        android:paddingLeft="@dimen/padding_15dp"
-        android:id="@+id/summaryLabelHour"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/iconImageHour"
-        android:layout_toEndOf="@+id/iconImageHour"/>
+        android:layout_toRightOf="@+id/hourLabel"
+        android:layout_toEndOf="@+id/hourLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,15 +35,16 @@
         android:id="@+id/tempLabelHour"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
+        android:paddingLeft="@dimen/padding_34dp"
         android:textColor="#ffffffff"
-        android:layout_toLeftOf="@+id/degreeImage"
+        android:layout_toRightOf="@+id/iconImageHour"
         />
 
     <ImageView
         android:layout_width="@dimen/padding_5dp"
         android:layout_height="@dimen/padding_5dp"
         android:id="@+id/degreeImage"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tempLabelHour"
         android:layout_marginTop="@dimen/padding_10dp"
         android:src="@mipmap/degree"
         />

@@ -18,7 +18,7 @@ public class HourlyWeather implements Parcelable {
 
     private static final String TAG = HourlyWeather.class.getSimpleName();
     private long mTime;
-    private String mSummary;
+    //private String mSummary;
     private double mTemp;
     private String mIcon;
     private String mTimeZone;
@@ -71,16 +71,16 @@ public class HourlyWeather implements Parcelable {
         mTemp = temp;
     }
 
-    public String getSummary() {
+    /* public String getSummary() {
         return mSummary;
     }
 
     public void setSummary(String summary) {
         mSummary = summary;
-    }
+    } */
 
     public String getHoursOfDay() {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
         formatter.setTimeZone(timeZone);
         Date dateTime = new Date(mTime * 1000);
@@ -96,7 +96,7 @@ public class HourlyWeather implements Parcelable {
     @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeLong(mTime);
-        out.writeString(mSummary);
+        //out.writeString(mSummary);
         out.writeDouble(mTemp);
         out.writeString(mIcon);
         out.writeString(mTimeZone);
@@ -104,7 +104,7 @@ public class HourlyWeather implements Parcelable {
 
     private HourlyWeather(Parcel in) {
         mTime = in.readLong();
-        mSummary = in.readString();
+        //mSummary = in.readString();
         mTemp = in.readDouble();
         mIcon = in.readString();
         mTimeZone = in.readString();
