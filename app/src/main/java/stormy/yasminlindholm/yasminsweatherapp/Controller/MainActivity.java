@@ -47,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mHumidityValueLabel;
     private TextView mcloudCover;
     private TextView mSummaryLabel;
+    private TextView mSummaryHour;
     private ImageView mRefresh;
     private ProgressBar mProgressBar;
     private Button mDailyButton;
@@ -67,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mDailyButton = (Button) findViewById(R.id.dailyButton);
         mHourlyButton = (Button) findViewById(R.id.hourlyButton);
+        mSummaryHour = (TextView) findViewById(R.id.summaryHour);
 
         mProgressBar.setVisibility(View.INVISIBLE);
 
@@ -244,7 +246,7 @@ public class MainActivity extends ActionBarActivity {
             JSONObject jsonHour = hourlyData.getJSONObject(i);
             HourlyWeather hourlyWeather = new HourlyWeather();
 
-            //hourlyWeather.setSummary(jsonHour.getString("summary"));
+            hourlyWeather.setSummary(jsonHour.getString("summary"));
             hourlyWeather.setTemp(jsonHour.getDouble("temperature"));
             hourlyWeather.setIcon(jsonHour.getString("icon"));
             hourlyWeather.setTime(jsonHour.getLong("time"));

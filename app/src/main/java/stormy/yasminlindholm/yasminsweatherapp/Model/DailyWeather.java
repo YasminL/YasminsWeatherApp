@@ -86,6 +86,7 @@ public class DailyWeather implements Parcelable {
 
     public String getSummary() {
         return mSummary;
+
     }
 
     public void setSummary(String summary) {

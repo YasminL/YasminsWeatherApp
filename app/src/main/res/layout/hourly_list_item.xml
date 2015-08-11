@@ -60,4 +60,15 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/hourLabel"
         android:layout_alignStart="@+id/hourLabel"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/summaryHour"
+        android:textSize="1sp"
+        android:textColor="#AEC6CF"
+        android:layout_alignBottom="@+id/tempLabelHour"
+        android:layout_toRightOf="@+id/degreeImage"
+        android:layout_toEndOf="@+id/degreeImage"/>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
@@ -35,7 +36,7 @@ public class HourlyForecastActivity extends ActionBarActivity {
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.HOURLY_FORECAST);
         mHourlyWeather = Arrays.copyOf(parcelables, parcelables.length, HourlyWeather[].class);
 
-        HourAdapter adapter = new HourAdapter(mHourlyWeather);
+        HourAdapter adapter = new HourAdapter(this, mHourlyWeather);
         mRecyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

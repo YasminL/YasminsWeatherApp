@@ -42,7 +42,6 @@ public class DailyForecastActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         String dayOfTheWeek = mDailyWeather[position].getDaysOfWeek();
-        Log.i(TAG, "The position is: " + position);
         String summary = mDailyWeather[position].getSummary();
         String message;
 
