@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         tools:text="17:00"
         android:id="@+id/hourLabel"
-        android:paddingLeft="52dp"
+        android:paddingLeft="56dp"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
         android:textColor="#ffffffff"/>
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/iconImageHour"
         android:src="@mipmap/cloudy_night"
-        android:paddingLeft="112dp"
+        android:paddingLeft="140dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/hourLabel"
         android:layout_alignStart="@+id/hourLabel"/>
@@ -35,7 +35,7 @@
         android:id="@+id/tempLabelHour"
         android:layout_centerVertical="true"
         android:textSize="@dimen/textSixe_20sp"
-        android:paddingLeft="@dimen/padding_15dp"
+        android:paddingLeft="34dp"
         android:textColor="#ffffffff"
         android:layout_toRightOf="@+id/iconImageHour"
         />
