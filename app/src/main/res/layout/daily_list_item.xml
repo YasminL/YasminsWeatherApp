@@ -3,8 +3,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:paddingRight="@dimen/padding_32dp"
                 android:paddingTop="@dimen/padding_4dp"
                 android:paddingBottom="@dimen/padding_4dp"
                 tools:background="#AEC6CF">
@@ -15,7 +13,7 @@
         android:id="@+id/iconImageView"
         android:src="@mipmap/clear_day"
         android:layout_centerVertical="true"
-        android:paddingLeft="74dp"
+        android:paddingLeft="100dp"
         android:layout_toEndOf="@+id/tempLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -25,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/dayNameLabel"
         android:textColor="#ffffffff"
-        android:paddingLeft="@dimen/padding_10dp"
+        android:paddingLeft="36dp"
         android:textSize="@dimen/textSixe_20sp"
         tools:text="Wednesday"
         android:layout_toRightOf="@+id/iconImageView"
@@ -39,6 +37,7 @@
         android:singleLine="true"
         android:autoText="false"
         tools:text="20"
+        android:paddingLeft="6dp"
         android:textSize="@dimen/textSixe_20sp"
         android:layout_centerVertical="true"/>
 
