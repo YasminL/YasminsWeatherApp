@@ -17,5 +17,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="emptyList">Sorry, no daily forecast to display. Do not buy a lottery ticket today.. :)</string>
     <string name="title_activity_hourly_forecast">HourlyForecastActivity</string>
+    <string name="title_activity_start">StartActivity</string>
 
 </resources>

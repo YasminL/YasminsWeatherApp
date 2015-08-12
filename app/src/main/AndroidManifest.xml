@@ -36,6 +36,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stormy.yasminlindholm.yasminsweatherapp.Controller.MainActivity" />
         </activity>
+        <activity
+            android:name=".Adapters.StartActivity"
+            android:label="@string/title_activity_start" >
+        </activity>
     </application>
 
 </manifest>
