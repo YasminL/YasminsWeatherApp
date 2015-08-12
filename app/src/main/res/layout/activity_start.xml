@@ -10,34 +10,40 @@
               android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/writeLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/writeLocation"
+        android:textColor="#ffffffff"
         android:hint="Name your place"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:layout_below="@+id/welcomeToStart"
         android:textColorHint="#ffffffff"
+        android:singleLine="true"
         />
 
     <TextView
+        android:id="@+id/welcomeToStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nice to meet you!"
         android:layout_marginTop="61dp"
         android:layout_marginBottom="30sp"
-        android:id="@+id/welcomeToStart"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffffff"
         android:textSize="30sp"/>
 
     <EditText
+        android:id="@+id/writeLatitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:textColor="#ffffffff"
+        android:singleLine="true"
+        android:layout_alignRight="@+id/writeLocation"
+        android:layout_alignLeft="@+id/writeLocation"
         android:theme="@style/MyEditTextTheme"
-        android:id="@+id/writeLatitude"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Latitude"
         android:textColorHint="@android:color/white"
@@ -45,11 +51,15 @@
         />
 
     <EditText
+        android:id="@+id/writeLongitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:textColor="#ffffffff"
+        android:singleLine="true"
+        android:layout_alignRight="@+id/writeLocation"
+        android:layout_alignLeft="@+id/writeLocation"
         android:theme="@style/MyEditTextTheme"
-        android:id="@+id/writeLongitude"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Longitude"
         android:textColorHint="@android:color/white"
@@ -57,14 +67,16 @@
         />
 
     <Button
+        android:id="@+id/continueToMainPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Continue"
-        android:id="@+id/continueToMainPage"
-        android:background="#aec6cf"
+        android:background="#80aec6cf"
         android:textColor="#ffffffff"
         android:textAllCaps="false"
         android:textSize="@dimen/textSixe_20sp"
         android:layout_below="@+id/writeLongitude"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"/>
 </RelativeLayout>

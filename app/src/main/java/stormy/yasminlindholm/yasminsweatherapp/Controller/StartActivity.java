@@ -1,4 +1,4 @@
-package stormy.yasminlindholm.yasminsweatherapp.Adapters;
+package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,5 +15,5 @@ public class StartActivity extends ActionBarActivity {
         setContentView(R.layout.activity_start);
     }
 
-    
+
 }
