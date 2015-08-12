@@ -6,6 +6,7 @@
               android:background="@drawable/background_gradient"
               android:layout_width="match_parent"
               android:paddingLeft="@dimen/padding_32dp"
+              android:paddingRight="@dimen/padding_32dp"
               android:layout_height="match_parent">
 
     <EditText
@@ -53,5 +54,17 @@
         android:hint="Longitude"
         android:textColorHint="@android:color/white"
         android:layout_below="@+id/writeLatitude"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:id="@+id/continueToMainPage"
+        android:background="#aec6cf"
+        android:textColor="#ffffffff"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textSixe_20sp"
+        android:layout_below="@+id/writeLongitude"
         />
 </RelativeLayout>
