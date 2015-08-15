@@ -12,19 +12,6 @@
     android:id="@+id/relatvieLayout">
 
     <TextView
-        android:id="@+id/TimeZoneLabel"
-        android:layout_width="match_parent"
-        android:text=""
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="69dp" />
-
-    <TextView
         android:id="@+id/temperatureLabel"
         android:text="--"
         android:layout_width="wrap_content"

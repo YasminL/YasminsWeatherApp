@@ -38,7 +38,7 @@
         android:id="@+id/writeLatitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#ffffffff"
         android:singleLine="true"
         android:layout_alignRight="@+id/writeLocation"
@@ -54,7 +54,7 @@
         android:id="@+id/writeLongitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#ffffffff"
         android:singleLine="true"
         android:layout_alignRight="@+id/writeLocation"
@@ -79,4 +79,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="35dp"/>
+
 </RelativeLayout>

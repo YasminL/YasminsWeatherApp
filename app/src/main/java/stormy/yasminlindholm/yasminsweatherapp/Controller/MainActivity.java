@@ -70,10 +70,17 @@ public class MainActivity extends ActionBarActivity {
         mHourlyButton = (Button) findViewById(R.id.hourlyButton);
         mSummaryHour = (TextView) findViewById(R.id.summaryHour);
 
+        Intent intent = new Intent();
+        final double longitude = intent.getDoubleExtra("longitudeDouble",59.33259);
+        final double latitude = intent.getDoubleExtra("latitudeDouble", 18.01480);
+        final String location = intent.getStringExtra("locationString");
+        Log.i(TAG, "We are logging in OnCreate() and the location is: " + location);
+
+        setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);
 
-        final double latitude = 18.01480;
-        final double longitude = 59.33259;
+        /* final double latitude = 18.01480;
+        final double longitude = 59.33259; */
 
 
         mRefresh.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +107,10 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+    }
+
+    private void setLocation(String location) {
+        mTimeZone.setText(location);
     }
 
     private void startHourlyForecastActivity() {
