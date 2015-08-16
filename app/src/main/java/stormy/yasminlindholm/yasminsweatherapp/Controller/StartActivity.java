@@ -1,5 +1,6 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -19,11 +20,13 @@ public class StartActivity extends ActionBarActivity {
 
     public final static String TAG = StartActivity.class.getSimpleName();
 
+    AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
+
     private EditText mLongitude;
     private EditText mLatitude;
     private EditText mLocation;
     private Button mButton;
-    private Context context;
+    public Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +45,30 @@ public class StartActivity extends ActionBarActivity {
                 String latitude = mLatitude.getText().toString();
                 String location = mLocation.getText().toString();
 
-                Boolean isStringEmpty= seeIfDouble(longitude, latitude, location);
-                if (isStringEmpty) {
+                boolean isLongitudeInputValid = seeIfStringIsValid(longitude);
+                boolean isLatitudeInputValid = seeIfStringIsValid(latitude);
+                boolean isLocationInputValid = seeIfStringIsValid(location);
+
+
+                if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
                     double latitudeDouble = Double.parseDouble(latitude);
                     double longitudeDouble = Double.parseDouble(longitude);
                     startMainActivity(longitudeDouble, latitudeDouble, location);
-                } else {
-                    Toast.makeText(context, "You have forgotten to fill in a field!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    alertUserAboutEmptyFields();
                 }
 
             }
         });
     }
 
-    private Boolean seeIfDouble(String longitude, String latitude, String location) {
-        if (longitude.trim().equals("") || latitude.trim().equals("") || location.trim().equals("")) {
+    private void alertUserAboutEmptyFields() {
+        alertDialog.show(getFragmentManager(), "error_emptyFields");
+    }
+
+    private boolean seeIfStringIsValid(String str) {
+        if (str == null || str.trim().equals("")) {
             return false;
         }
         else {
@@ -69,6 +81,9 @@ public class StartActivity extends ActionBarActivity {
         intent.putExtra("longitudeDouble", longitudeDouble);
         intent.putExtra("latitudeDouble", latitudeDouble);
         intent.putExtra("locationString", location);
+        Log.i(TAG, "We are logging in startMainActivity() and the longitude is: " + longitudeDouble);
+        Log.i(TAG, "We are logging in startMainActivity() and the latitude is: " + latitudeDouble);
+        Log.i(TAG, "We are logging in startMainActivity() and the location is: " + location);
         startActivity(intent);
     }
 }

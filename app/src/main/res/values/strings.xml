@@ -18,5 +18,7 @@
     <string name="emptyList">Sorry, no daily forecast to display. Do not buy a lottery ticket today.. :)</string>
     <string name="title_activity_hourly_forecast">HourlyForecastActivity</string>
     <string name="title_activity_start">StartActivity</string>
+    <string name="error_oups">Oups!</string>
+    <string name="error_fillInAllFields">Please fill in all fields</string>
 
 </resources>
