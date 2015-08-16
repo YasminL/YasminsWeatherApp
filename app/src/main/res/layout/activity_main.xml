@@ -46,9 +46,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/cloudy"
-        android:layout_alignTop="@+id/TimeZoneLabel"
-        android:layout_above="@+id/timeLabel"
-        android:layout_toLeftOf="@+id/refreshImage"
+        android:layout_above="@+id/timeZoneLabel"
+        android:layout_alignRight="@+id/temperatureLabel"
+        android:layout_alignEnd="@+id/temperatureLabel"
         android:layout_alignLeft="@+id/temperatureLabel"
         android:layout_alignStart="@+id/temperatureLabel"/>
 
@@ -152,27 +152,28 @@
         android:layout_alignEnd="@+id/TimeZoneLabel">
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="167dp"
             android:layout_height="wrap_content"
             android:text="hourly"
             android:id="@+id/hourlyButton"
-            android:layout_weight="1"
             android:background="#40ffffff"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:singleLine="true"
             android:layout_marginRight="5dp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="one week"
-            android:textStyle="bold"
-            android:id="@+id/dailyButton"
-            android:layout_weight="1"
-            android:background="#40ffffff"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="5dp"/>
     </LinearLayout>
+
+    <Button
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:text="one week"
+        android:textStyle="bold"
+        android:id="@+id/dailyButton"
+        android:background="#40ffffff"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

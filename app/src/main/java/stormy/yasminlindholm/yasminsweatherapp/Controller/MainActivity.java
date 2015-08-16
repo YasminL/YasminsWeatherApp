@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
         mHourlyButton = (Button) findViewById(R.id.hourlyButton);
         mSummaryHour = (TextView) findViewById(R.id.summaryHour);
 
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         final double longitude = intent.getDoubleExtra("longitudeDouble",59.33259);
         final double latitude = intent.getDoubleExtra("latitudeDouble", 18.01480);
         final String location = intent.getStringExtra("locationString");

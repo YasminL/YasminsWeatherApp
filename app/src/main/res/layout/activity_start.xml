@@ -10,7 +10,7 @@
               android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/writeLocation"
+        android:id="@+id/writeLocationInStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffffff"
@@ -41,13 +41,13 @@
         android:inputType="numberDecimal"
         android:textColor="#ffffffff"
         android:singleLine="true"
-        android:layout_alignRight="@+id/writeLocation"
-        android:layout_alignLeft="@+id/writeLocation"
+        android:layout_alignRight="@+id/writeLocationInStart"
+        android:layout_alignLeft="@+id/writeLocationInStart"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Latitude"
         android:textColorHint="@android:color/white"
-        android:layout_below="@+id/writeLocation"
+        android:layout_below="@+id/writeLocationInStart"
         />
 
     <EditText
@@ -57,8 +57,8 @@
         android:inputType="numberDecimal"
         android:textColor="#ffffffff"
         android:singleLine="true"
-        android:layout_alignRight="@+id/writeLocation"
-        android:layout_alignLeft="@+id/writeLocation"
+        android:layout_alignRight="@+id/writeLocationInStart"
+        android:layout_alignLeft="@+id/writeLocationInStart"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Longitude"
