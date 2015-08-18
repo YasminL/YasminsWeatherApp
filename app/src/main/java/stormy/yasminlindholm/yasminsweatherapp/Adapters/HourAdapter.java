@@ -67,7 +67,6 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
             mTempLabel = (TextView) itemView.findViewById(R.id.tempLabelHour);
             mDayNameLabel = (TextView) itemView.findViewById(R.id.dayNameLabelHour);
             mSummary = (TextView) itemView.findViewById(R.id.summaryHour);
-            Log.i(TAG, "We are logging in HourViewHolder and the summary is" + mSummary);
             itemView.setOnClickListener(this);
         }
 
@@ -80,13 +79,14 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
 
         }
 
+
         @Override
         public void onClick(View v) {
-            String dayName = mDayNameLabel.getText().toString();
+            /* String dayName = mDayNameLabel.getText().toString();
             String time = mTimeLabel.getText().toString();
             String summary = mSummary.getText().toString();
             String message = String.format("The weather for %s at %s is %s", dayName, time, summary);
-            Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, message, Toast.LENGTH_LONG).show(); */
         }
     }
 }

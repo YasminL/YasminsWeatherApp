@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@android:id/list"
         android:layout_below="@+id/DailyText"
-        android:layout_above="@+id/locationLabel"
+        android:layout_above="@+id/locationLabelWeek"
         android:divider="@null"
         android:dividerHeight="0dp"
         />
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Creutzgatan"
-        android:id="@+id/locationLabel"
+        android:id="@+id/locationLabelWeek"
         android:textColor="#ffffffff"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"

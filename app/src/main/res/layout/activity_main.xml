@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/padding_32dp"
     android:paddingBottom="@dimen/activity_vertical_margin_10dp"
     android:background="@drawable/background_gradient"
     tools:context=".MainActivity"
@@ -28,6 +28,7 @@
         android:textColor="#80ffffff"
         android:textSize="18sp"
         android:text="--"
+        tools:text="At16:46"
         android:layout_above="@+id/timeZoneLabel"
         android:layout_centerHorizontal="true"/>
 
@@ -43,14 +44,11 @@
 
     <ImageView
         android:id="@+id/weatherIconImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/padding_50dp"
+        android:layout_height="@dimen/padding_50dp"
         android:src="@mipmap/cloudy"
-        android:layout_above="@+id/timeZoneLabel"
-        android:layout_alignRight="@+id/temperatureLabel"
-        android:layout_alignEnd="@+id/temperatureLabel"
-        android:layout_alignLeft="@+id/temperatureLabel"
-        android:layout_alignStart="@+id/temperatureLabel"/>
+        android:layout_above="@+id/timeLabel"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:id="@+id/refreshImage"
@@ -125,12 +123,13 @@
         android:layout_height="wrap_content"
         android:text="---"
         android:id="@+id/summaryLabel"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
         android:textColor="#ffffffff"
         android:textSize="18dp"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -149,7 +148,8 @@
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/refreshImage"
         android:layout_alignRight="@+id/TimeZoneLabel"
-        android:layout_alignEnd="@+id/TimeZoneLabel">
+        android:layout_alignEnd="@+id/TimeZoneLabel"
+        android:id="@+id/linearLayout2">
 
         <Button
             android:layout_width="167dp"
