@@ -1,8 +1,10 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +18,16 @@ import android.widget.Toast;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
-public class StartActivity extends ActionBarActivity {
+public class StartActivity extends Activity {
 
     public final static String TAG = StartActivity.class.getSimpleName();
 
     AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
+
+    private static final String PREF_NAME = "Location";
+    private static final String PREF_LOCATION = "LocationName";
+    private static final String PREF_LATITUDE = "LocationLatitude";
+    private static final String PREF_LONGITUDE = "LocationLongitude";
 
     private EditText mLongitude;
     private EditText mLatitude;
@@ -38,10 +45,13 @@ public class StartActivity extends ActionBarActivity {
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
 
+
+
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String longitude =  mLongitude.getText().toString();
+                String longitude = mLongitude.getText().toString();
                 String latitude = mLatitude.getText().toString();
                 String location = mLocation.getText().toString();
 
@@ -51,16 +61,32 @@ public class StartActivity extends ActionBarActivity {
 
 
                 if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
+                    String storedLocationFromSharedPreferences = startSharedPreferences(latitude, longitude, location);
+
                     double latitudeDouble = Double.parseDouble(latitude);
                     double longitudeDouble = Double.parseDouble(longitude);
-                    startMainActivity(longitudeDouble, latitudeDouble, location);
-                }
-                else {
+                    Log.i(TAG, "We are logging in onClick() and the storedLocationFromSharedPreferences is: " + storedLocationFromSharedPreferences);
+                    startMainActivity(longitudeDouble, latitudeDouble, storedLocationFromSharedPreferences);
+                } else {
                     alertUserAboutEmptyFields();
                 }
 
             }
         });
+    }
+
+
+
+    private String startSharedPreferences(String latitude, String longitude, String location) {
+        SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString(PREF_LOCATION, location);
+        prefEditor.putString(PREF_LATITUDE, latitude);
+        prefEditor.putString(PREF_LONGITUDE, longitude);
+        prefEditor.commit();
+        String storedLocation = settings.getString(PREF_LOCATION, null);
+        Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLocation);
+        return storedLocation;
     }
 
     private void alertUserAboutEmptyFields() {
