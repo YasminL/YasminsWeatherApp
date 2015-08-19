@@ -75,6 +75,8 @@ public class MainActivity extends ActionBarActivity {
         final double latitude = intent.getDoubleExtra("latitudeDouble", 18.01480);
         final String location = intent.getStringExtra("locationString");
         Log.i(TAG, "We are logging in OnCreate() and the location is: " + location);
+        Log.i(TAG, "We are logging in OnCreate() and the latitude is: " + latitude);
+        Log.i(TAG, "We are logging in OnCreate() and the longitude is: " + longitude);
 
         setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);

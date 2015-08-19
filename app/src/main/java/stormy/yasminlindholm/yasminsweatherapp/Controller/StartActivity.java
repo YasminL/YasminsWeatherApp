@@ -35,6 +35,8 @@ public class StartActivity extends Activity {
     private Button mButton;
     public Context context;
 
+    String location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,29 +47,25 @@ public class StartActivity extends Activity {
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
 
-
-
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String longitude = mLongitude.getText().toString();
-                String latitude = mLatitude.getText().toString();
-                String location = mLocation.getText().toString();
+
+                final String longitude = mLongitude.getText().toString();
+                final String latitude = mLatitude.getText().toString();
+                final String location = mLocation.getText().toString();
 
                 boolean isLongitudeInputValid = seeIfStringIsValid(longitude);
                 boolean isLatitudeInputValid = seeIfStringIsValid(latitude);
                 boolean isLocationInputValid = seeIfStringIsValid(location);
 
-
                 if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
-                    String storedLocationFromSharedPreferences = startSharedPreferences(latitude, longitude, location);
-
+                    commitSharedPreferences(latitude, longitude, location);
                     double latitudeDouble = Double.parseDouble(latitude);
                     double longitudeDouble = Double.parseDouble(longitude);
-                    Log.i(TAG, "We are logging in onClick() and the storedLocationFromSharedPreferences is: " + storedLocationFromSharedPreferences);
-                    startMainActivity(longitudeDouble, latitudeDouble, storedLocationFromSharedPreferences);
-                } else {
+                    startMainActivity(longitudeDouble, latitudeDouble, location);
+                }
+                else {
                     alertUserAboutEmptyFields();
                 }
 
@@ -75,18 +73,30 @@ public class StartActivity extends Activity {
         });
     }
 
+    /* private String seeIfSharedPreferences() {
+        SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
+        String storedLocation = settings.getString(PREF_LOCATION, null);
+        //String storedLatitude = settings.getString(PREF_LATITUDE, null);
+        //String storedLongitude = settings.getString(PREF_LONGITUDE, null);
+
+        if (storedLocation != null) {
+            return storedLocation;
+        }
+        else {
+            return null;
+        }
+        //Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLatitude);
+        //Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLongitude);
+    } */
 
 
-    private String startSharedPreferences(String latitude, String longitude, String location) {
+    private void commitSharedPreferences(String latitude, String longitude, String location) {
         SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString(PREF_LOCATION, location);
         prefEditor.putString(PREF_LATITUDE, latitude);
         prefEditor.putString(PREF_LONGITUDE, longitude);
         prefEditor.commit();
-        String storedLocation = settings.getString(PREF_LOCATION, null);
-        Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLocation);
-        return storedLocation;
     }
 
     private void alertUserAboutEmptyFields() {
