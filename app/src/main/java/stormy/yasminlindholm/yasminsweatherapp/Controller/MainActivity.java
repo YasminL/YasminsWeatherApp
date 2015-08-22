@@ -2,6 +2,7 @@ package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -37,6 +38,11 @@ public class MainActivity extends ActionBarActivity {
     public static final String DAILY_FORECAST = "DAILY FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY FORECAST";
 
+    private static final String PREF_NAME = "Location";
+    private static final String PREF_LOCATION = "LocationName";
+    private static final String PREF_LATITUDE = "LocationLatitude";
+    private static final String PREF_LONGITUDE = "LocationLongitude";
+
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
     private Forecast mForecast;
@@ -57,6 +63,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mWeatherIcon = (ImageView) findViewById(R.id.weatherIconImage);
         mTimeLabel = (TextView) findViewById(R.id.timeLabel);
         mTimeZone = (TextView) findViewById(R.id.timeZoneLabel);
@@ -70,10 +77,12 @@ public class MainActivity extends ActionBarActivity {
         mHourlyButton = (Button) findViewById(R.id.hourlyButton);
         mSummaryHour = (TextView) findViewById(R.id.summaryHour);
 
-        Intent intent = getIntent();
-        final double longitude = intent.getDoubleExtra("longitudeDouble",59.33259);
-        final double latitude = intent.getDoubleExtra("latitudeDouble", 18.01480);
-        final String location = intent.getStringExtra("locationString");
+        SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
+        final String location = settings.getString(PREF_LOCATION, "empty");
+        String spLatitude = settings.getString(PREF_LATITUDE, "18.01480");
+        final double latitude = Double.parseDouble(spLatitude);
+        String spLongitude = settings.getString(PREF_LONGITUDE, "59.33259");
+        final double longitude = Double.parseDouble(spLongitude);
         Log.i(TAG, "We are logging in OnCreate() and the location is: " + location);
         Log.i(TAG, "We are logging in OnCreate() and the latitude is: " + latitude);
         Log.i(TAG, "We are logging in OnCreate() and the longitude is: " + longitude);

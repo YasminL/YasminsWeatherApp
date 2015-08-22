@@ -35,8 +35,6 @@ public class StartActivity extends Activity {
     private Button mButton;
     public Context context;
 
-    String location;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +58,7 @@ public class StartActivity extends Activity {
                 boolean isLocationInputValid = seeIfStringIsValid(location);
 
                 if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
-                    commitSharedPreferences(latitude, longitude, location);
+                    saveCollection(latitude, longitude, location);
                     double latitudeDouble = Double.parseDouble(latitude);
                     double longitudeDouble = Double.parseDouble(longitude);
                     startMainActivity(longitudeDouble, latitudeDouble, location);
@@ -73,29 +71,13 @@ public class StartActivity extends Activity {
         });
     }
 
-    /* private String seeIfSharedPreferences() {
-        SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
-        String storedLocation = settings.getString(PREF_LOCATION, null);
-        //String storedLatitude = settings.getString(PREF_LATITUDE, null);
-        //String storedLongitude = settings.getString(PREF_LONGITUDE, null);
-
-        if (storedLocation != null) {
-            return storedLocation;
-        }
-        else {
-            return null;
-        }
-        //Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLatitude);
-        //Log.i(TAG, "We are logging in startSharedPreferences() and the storedLocation is: " + storedLongitude);
-    } */
-
-
-    private void commitSharedPreferences(String latitude, String longitude, String location) {
+    private void saveCollection(String latitude, String longitude, String location) {
         SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString(PREF_LOCATION, location);
         prefEditor.putString(PREF_LATITUDE, latitude);
         prefEditor.putString(PREF_LONGITUDE, longitude);
+        prefEditor.clear();
         prefEditor.commit();
     }
 
