@@ -12,10 +12,10 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Controller.StartActivity"
-            android:label="@string/title_activity_start" >
+            android:label="@string/title_activity_start"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +30,8 @@
         <activity
             android:name=".Controller.DailyForecastActivity"
             android:label="@string/title_activity_daily_forecast"
-            android:parentActivityName=".Controller.MainActivity" >
+            android:parentActivityName=".Controller.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stormy.yasminlindholm.yasminsweatherapp.Controller.MainActivity" />
@@ -38,7 +39,8 @@
         <activity
             android:name=".Controller.HourlyForecastActivity"
             android:label="@string/title_activity_hourly_forecast"
-            android:parentActivityName=".Controller.MainActivity" >
+            android:parentActivityName=".Controller.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stormy.yasminlindholm.yasminsweatherapp.Controller.MainActivity" />

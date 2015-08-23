@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Continue"
-        android:background="#80aec6cf"
+        android:background="#AEC6CF"
         android:textColor="#ffffffff"
         android:textAllCaps="false"
         android:textSize="@dimen/textSixe_20sp"
