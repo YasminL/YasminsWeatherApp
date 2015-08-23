@@ -40,14 +40,22 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        if (checkIfSharedPrefs()) {
-            startMainActivity();
-        }
-
         mLongitude = (EditText) findViewById(R.id.writeLongitude);
         mLatitude = (EditText) findViewById(R.id.writeLatitude);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
+
+        SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
+
+        if (checkIfSharedPrefs(myPrefs)) {
+            String location = myPrefs.getString(PREF_LOCATION, "default location");
+            String latitude = myPrefs.getString(PREF_LATITUDE, "default latitude");
+            String longitude = myPrefs.getString(PREF_LONGITUDE, "default longitue");
+            insertSharedPrefIntoLayout(location, latitude, longitude);
+            startMainActivity();
+        }
+
+
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +80,13 @@ public class StartActivity extends Activity {
         });
     }
 
-    private boolean checkIfSharedPrefs() {
-        SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
+    private void insertSharedPrefIntoLayout(String location, String latitude, String longitude) {
+        mLocation.setText(location);
+        mLatitude.setText(latitude);
+        mLongitude.setText(longitude);
+    }
+
+    private boolean checkIfSharedPrefs(SharedPreferences myPrefs) {
         String location = myPrefs.getString(PREF_LOCATION, "default location");
         String latitude = myPrefs.getString(PREF_LATITUDE, "default latitude");
         String longitude = myPrefs.getString(PREF_LONGITUDE, "default longitue");
