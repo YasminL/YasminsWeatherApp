@@ -40,10 +40,9 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-
-        boolean trueornot = checkIfSharedPrefs();
-        Log.i(TAG, "true or not is: " + trueornot);
-
+        if (checkIfSharedPrefs()) {
+            startMainActivity();
+        }
 
         mLongitude = (EditText) findViewById(R.id.writeLongitude);
         mLatitude = (EditText) findViewById(R.id.writeLatitude);
@@ -65,8 +64,7 @@ public class StartActivity extends Activity {
                 if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
                     saveCollection(latitude, longitude, location);
                     startMainActivity();
-                }
-                else {
+                } else {
                     alertUserAboutEmptyFields();
                 }
 
