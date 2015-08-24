@@ -17,6 +17,7 @@
         android:hint="Name your place"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
+        android:capitalize="characters"
         android:layout_below="@+id/welcomeToStart"
         android:textColorHint="#ffffffff"
         android:singleLine="true"
