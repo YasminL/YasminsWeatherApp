@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
@@ -29,6 +32,7 @@ public class StartActivity extends Activity {
     private static final String PREF_LATITUDE = "LocationLatitude";
     private static final String PREF_LONGITUDE = "LocationLongitude";
 
+    private TextView mTip;
     private EditText mLongitude;
     private EditText mLatitude;
     private EditText mLocation;
@@ -44,6 +48,8 @@ public class StartActivity extends Activity {
         mLatitude = (EditText) findViewById(R.id.writeLatitude);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
+        mTip = (TextView) findViewById(R.id.hrefLatLong);
+        mTip.setMovementMethod(LinkMovementMethod.getInstance());
 
         SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 

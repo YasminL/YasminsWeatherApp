@@ -18,10 +18,12 @@
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:capitalize="characters"
-        android:layout_below="@+id/welcomeToStart"
         android:textColorHint="#ffffffff"
         android:singleLine="true"
-        />
+        android:layout_below="@+id/welcomeToStart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="76dp"/>
 
     <TextView
         android:id="@+id/welcomeToStart"
@@ -80,5 +82,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="35dp"/>
+
+    <TextView
+        android:id="@+id/hrefLatLong"
+        android:text="@string/hrefLatLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSixe_20sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/welcomeToStart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"/>
 
 </RelativeLayout>
