@@ -48,7 +48,11 @@
         android:layout_height="@dimen/padding_50dp"
         android:src="@mipmap/cloudy"
         android:layout_above="@+id/timeLabel"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/timeZoneLabel"
+        android:layout_alignEnd="@+id/timeZoneLabel"
+        android:layout_alignLeft="@+id/timeZoneLabel"
+        android:layout_alignStart="@+id/timeZoneLabel"/>
 
     <ImageView
         android:id="@+id/refreshImage"
