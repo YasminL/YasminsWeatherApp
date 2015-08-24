@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Controller.StartActivity"
-            android:label="@string/title_activity_start"
+            android:label="MyWeather"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
