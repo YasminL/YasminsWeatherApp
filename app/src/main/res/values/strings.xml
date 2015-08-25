@@ -13,7 +13,7 @@
     <string name="City">Creutzgatan</string>
     <string name="Example_time">At 18:00</string>
     <string name="title_activity_daily_forecast">DailyForecastActivity</string>
-    <string name ="hrefLatLong">"Tip! For lat and long, <a href="http://www.latlong.net/">click here</a></string>
+    <string name ="hrefLatLong">"This is an app optimized for weather in Sweden and Europe. \n \n Tip! For lat and long, <a href="http://www.latlong.net/">click here</a></string>
 
     <string name="hello_world">Hello world!</string>
     <string name="emptyList">Sorry, no daily forecast to display. Do not buy a lottery ticket today.. :)</string>

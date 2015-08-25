@@ -1,18 +1,12 @@
 package stormy.yasminlindholm.yasminsweatherapp.Adapters;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import stormy.yasminlindholm.yasminsweatherapp.Model.HourlyWeather;
 import stormy.yasminlindholm.yasminsweatherapp.R;
@@ -71,7 +65,7 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
         }
 
         public void bindHour(HourlyWeather hourWeather) {
-            mTimeLabel.setText(hourWeather.getHoursOfDay());
+            mTimeLabel.setText(hourWeather.getHoursOfDayEurope());
             mIconLabel.setImageResource(hourWeather.getIconId());
             mTempLabel.setText(hourWeather.getTemp() + "");
             mDayNameLabel.setText(hourWeather.getDayName());

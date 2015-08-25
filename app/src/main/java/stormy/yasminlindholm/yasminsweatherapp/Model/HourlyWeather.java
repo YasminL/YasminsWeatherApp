@@ -58,6 +58,7 @@ public class HourlyWeather implements Parcelable {
         return timeString;
     }
 
+
     public void setTime(long time) {
         mTime = time;
     }
@@ -92,7 +93,7 @@ public class HourlyWeather implements Parcelable {
         mTemp = temp;
     }
 
-    public String getHoursOfDay() {
+    public String getHoursOfDayEurope() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         TimeZone timeZone = TimeZone.getTimeZone(mTimeZone);
         formatter.setTimeZone(timeZone);
