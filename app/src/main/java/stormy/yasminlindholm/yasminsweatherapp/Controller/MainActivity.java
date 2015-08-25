@@ -90,9 +90,6 @@ public class MainActivity extends ActionBarActivity {
         setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);
 
-        /* final double latitude = 18.01480;
-        final double longitude = 59.33259; */
-
 
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
     private void getForecast(double latitude, double longitude) {
         String APIKey = "d14269a6407e6000a1eb9b9240a57826";
         String forecastURL = "https://api.forecast.io/forecast/"
-                + APIKey + "/" + longitude + "," + latitude ;
+                + APIKey + "/" + latitude + "," + longitude ;
 
         if (isNetworkAvaliable()) {
             toggleRefresh();
@@ -175,7 +172,6 @@ public class MainActivity extends ActionBarActivity {
                             toggleRefresh();
                         }
                     });
-
 
                     try {
                         String jsonData = response.body().string();
@@ -246,6 +242,7 @@ public class MainActivity extends ActionBarActivity {
 
             dailyWeather.setSummary(jsonDaily.getString("summary"));
             dailyWeather.setTempMin(jsonDaily.getLong("temperatureMin"));
+            dailyWeather.setTempMax(jsonDaily.getLong("temperatureMax"));
             dailyWeather.setTime(jsonDaily.getLong("time"));
             dailyWeather.setIcon(jsonDaily.getString("icon"));
             dailyWeather.setTimeZone(timeZone);

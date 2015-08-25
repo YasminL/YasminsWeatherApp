@@ -74,6 +74,7 @@ public class StartActivity extends Activity {
                 boolean isLongitudeInputValid = seeIfStringIsValid(longitude);
                 boolean isLatitudeInputValid = seeIfStringIsValid(latitude);
                 boolean isLocationInputValid = seeIfStringIsValid(location);
+                Log.i(TAG, "We are logging in onClick() and the longitude is: " + isLongitudeInputValid);
 
                 if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
                     saveCollection(latitude, longitude, location);

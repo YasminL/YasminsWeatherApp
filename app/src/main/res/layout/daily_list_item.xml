@@ -13,8 +13,7 @@
         android:id="@+id/iconImageView"
         android:src="@mipmap/clear_day"
         android:layout_centerVertical="true"
-        android:paddingLeft="100dp"
-        android:layout_toEndOf="@+id/tempLabel"
+        android:paddingLeft="106dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
@@ -32,7 +31,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tempLabel"
+        android:id="@+id/tempMinLabel"
         android:textColor="#ffffff"
         android:singleLine="true"
         android:autoText="false"
@@ -46,23 +45,23 @@
         android:layout_height="@dimen/padding_5dp"
         android:id="@+id/degreeImageView"
         android:src="@mipmap/degree"
-        android:layout_alignTop="@+id/tempLabel"
+        android:layout_alignTop="@+id/tempMinLabel"
         android:layout_marginTop="@dimen/padding_10dp"
-        android:layout_toRightOf="@+id/tempLabel"
-        android:layout_toEndOf="@+id/tempLabel"/>
+        android:layout_toRightOf="@+id/tempMinLabel"
+        android:layout_toEndOf="@+id/tempMinLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="- 25"
+        tools:text="25"
         android:id="@+id/tempMaxLabel"
         android:textColor="@android:color/white"
         android:textSize="@dimen/textSixe_20sp"
         android:layout_alignTop="@+id/dayNameLabel"
-        android:layout_toRightOf="@+id/tempLabel"
         android:paddingLeft="6dp"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/tempLabel"/>
+        android:layout_toEndOf="@+id/hyphen"
+        android:layout_toRightOf="@+id/hyphen"/>
 
     <ImageView
         android:layout_width="@dimen/padding_5dp"
@@ -71,4 +70,16 @@
         android:layout_marginTop="@dimen/padding_10dp"
         android:src="@mipmap/degree"
         android:layout_toRightOf="@+id/tempMaxLabel"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="36dp"
+        android:text="-"
+        android:id="@+id/hyphen"
+        android:textColor="@android:color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
 </RelativeLayout>
