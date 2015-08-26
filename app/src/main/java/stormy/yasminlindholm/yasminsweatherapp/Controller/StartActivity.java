@@ -54,13 +54,12 @@ public class StartActivity extends Activity {
         SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 
         if (checkIfSharedPrefs(myPrefs)) {
-            String location = myPrefs.getString(PREF_LOCATION, "default location");
-            String latitude = myPrefs.getString(PREF_LATITUDE, "default latitude");
-            String longitude = myPrefs.getString(PREF_LONGITUDE, "default longitue");
+            String location = myPrefs.getString(PREF_LOCATION, null);
+            String latitude = myPrefs.getString(PREF_LATITUDE, null);
+            String longitude = myPrefs.getString(PREF_LONGITUDE, null);
             insertSharedPrefIntoLayout(location, latitude, longitude);
             startMainActivity();
         }
-
 
 
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +84,7 @@ public class StartActivity extends Activity {
 
             }
         });
+        
     }
 
     private void insertSharedPrefIntoLayout(String location, String latitude, String longitude) {
@@ -94,9 +94,9 @@ public class StartActivity extends Activity {
     }
 
     private boolean checkIfSharedPrefs(SharedPreferences myPrefs) {
-        String location = myPrefs.getString(PREF_LOCATION, "default location");
-        String latitude = myPrefs.getString(PREF_LATITUDE, "default latitude");
-        String longitude = myPrefs.getString(PREF_LONGITUDE, "default longitue");
+        String location = myPrefs.getString(PREF_LOCATION, null);
+        String latitude = myPrefs.getString(PREF_LATITUDE, null);
+        String longitude = myPrefs.getString(PREF_LONGITUDE, null);
         Log.i(TAG, "We are logging in checkIfSharedPrefs() and the location is: " + location);
         Log.i(TAG, "We are logging in checkIfSharedPrefs() and the latitude is: " + latitude);
         Log.i(TAG, "We are logging in checkIfSharedPrefs() and the longitude is: " + longitude);
@@ -104,7 +104,9 @@ public class StartActivity extends Activity {
         if (location != null && latitude !=null && longitude !=null) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     private void saveCollection(String latitude, String longitude, String location) {
