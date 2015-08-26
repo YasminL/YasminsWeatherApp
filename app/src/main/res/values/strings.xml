@@ -4,7 +4,7 @@
     <string name="hello_yasmin">Hello Yaz</string>
     <string name="action_settings">Settings</string>
     <string name="error_title">Oups! Sorry!</string>
-    <string name="error_message">An error occured. Please try again</string>
+    <string name="error_message">An error occured! Please go back and double check the lat and long!</string>
     <string name="error_ok_button">OK</string>
     <string name="error_noAvaliableInternet">No internet avaliable.</string>
     <string name="error_OK_buttonText">OK</string>
