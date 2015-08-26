@@ -81,10 +81,9 @@ public class StartActivity extends Activity {
                 } else {
                     alertUserAboutEmptyFields();
                 }
-
             }
         });
-        
+
     }
 
     private void insertSharedPrefIntoLayout(String location, String latitude, String longitude) {
