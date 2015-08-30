@@ -11,7 +11,7 @@
 
     <EditText
         android:id="@+id/writeLocationInStart"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#ffffffff"
         android:hint="Name your place"
@@ -23,51 +23,19 @@
         android:layout_below="@+id/hrefLatLong"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="28dp"/>
+        android:layout_marginTop="72dp"/>
 
     <TextView
         android:id="@+id/welcomeToStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nice to meet you!"
-        android:layout_marginTop="61dp"
-        android:layout_marginBottom="30sp"
+        android:layout_marginTop="57dp"
+        android:textColor="#ffffffff"
+        android:textSize="30sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff"
-        android:textSize="30sp"/>
-
-    <EditText
-        android:id="@+id/writeLatitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
-        android:textColor="#ffffffff"
-        android:singleLine="true"
-        android:layout_alignRight="@+id/writeLocationInStart"
-        android:layout_alignLeft="@+id/writeLocationInStart"
-        android:theme="@style/MyEditTextTheme"
-        android:textSize="@dimen/textSixe_20sp"
-        android:hint="Latitude"
-        android:textColorHint="@android:color/white"
-        android:layout_below="@+id/writeLocationInStart"
-        />
-
-    <EditText
-        android:id="@+id/writeLongitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
-        android:textColor="#ffffffff"
-        android:singleLine="true"
-        android:layout_alignRight="@+id/writeLocationInStart"
-        android:layout_alignLeft="@+id/writeLocationInStart"
-        android:theme="@style/MyEditTextTheme"
-        android:textSize="@dimen/textSixe_20sp"
-        android:hint="Longitude"
-        android:textColorHint="@android:color/white"
-        android:layout_below="@+id/writeLatitude"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:id="@+id/continueToMainPage"
@@ -78,9 +46,10 @@
         android:textColor="#ffffffff"
         android:textAllCaps="false"
         android:textSize="@dimen/textSixe_20sp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/writeAddress"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"/>
 
     <TextView
         android:id="@+id/hrefLatLong"
@@ -95,19 +64,16 @@
 
     <EditText
         android:id="@+id/writeAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
         android:textColor="#ffffffff"
         android:singleLine="true"
+        android:capitalize="characters"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Address"
         android:layout_alignLeft="@+id/writeLocationInStart"
-        android:layout_alignRight="@+id/writeLocationInStart"
         android:textColorHint="@android:color/white"
-        android:layout_below="@+id/writeLongitude"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_below="@+id/writeLocationInStart"/>
 
 </RelativeLayout>

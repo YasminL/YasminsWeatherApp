@@ -38,10 +38,9 @@ public class MainActivity extends ActionBarActivity {
     public static final String DAILY_FORECAST = "DAILY FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY FORECAST";
 
-    private static final String PREF_NAME = "Location";
+    private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
-    private static final String PREF_LATITUDE = "LocationLatitude";
-    private static final String PREF_LONGITUDE = "LocationLongitude";
+    private static final String PREF_ADDRESS = "LocationLongitude";
 
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
@@ -79,16 +78,15 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
         final String location = settings.getString(PREF_LOCATION, "empty");
-        String spLatitude = settings.getString(PREF_LATITUDE, "18.01480");
-        final double latitude = Double.parseDouble(spLatitude);
-        String spLongitude = settings.getString(PREF_LONGITUDE, "59.33259");
-        final double longitude = Double.parseDouble(spLongitude);
+        String spAddress = settings.getString(PREF_ADDRESS, "Alcatraz");
         Log.i(TAG, "We are logging in OnCreate() and the location is: " + location);
-        Log.i(TAG, "We are logging in OnCreate() and the latitude is: " + latitude);
-        Log.i(TAG, "We are logging in OnCreate() and the longitude is: " + longitude);
+        Log.i(TAG, "We are logging in OnCreate() and the latitude is: " + spAddress);
 
         setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);
+
+        final double latitude = 59.0;
+        final double longitude = 18.0;
 
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override

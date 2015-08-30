@@ -27,14 +27,11 @@ public class StartActivity extends Activity {
 
     AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
 
-    private static final String PREF_NAME = "Location";
+    private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
-    private static final String PREF_LATITUDE = "LocationLatitude";
-    private static final String PREF_LONGITUDE = "LocationLongitude";
+    private static final String PREF_ADDRESS = "LocationLongitude";
 
-    private TextView mTip;
-    private EditText mLongitude;
-    private EditText mLatitude;
+    private EditText mAddress;
     private EditText mLocation;
     private Button mButton;
     public Context context;
@@ -44,20 +41,16 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        mLongitude = (EditText) findViewById(R.id.writeLongitude);
-        mLatitude = (EditText) findViewById(R.id.writeLatitude);
+        mAddress = (EditText) findViewById(R.id.writeAddress);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
-        mTip = (TextView) findViewById(R.id.hrefLatLong);
-        mTip.setMovementMethod(LinkMovementMethod.getInstance());
 
         SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 
         if (checkIfSharedPrefs(myPrefs)) {
             String location = myPrefs.getString(PREF_LOCATION, null);
-            String latitude = myPrefs.getString(PREF_LATITUDE, null);
-            String longitude = myPrefs.getString(PREF_LONGITUDE, null);
-            insertSharedPrefIntoLayout(location, latitude, longitude);
+            String address = myPrefs.getString(PREF_ADDRESS, null);
+            insertSharedPrefIntoLayout(location, address);
             startMainActivity();
         }
 
@@ -65,17 +58,14 @@ public class StartActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                final String longitude = mLongitude.getText().toString();
-                final String latitude = mLatitude.getText().toString();
                 final String location = mLocation.getText().toString();
+                final String address = mAddress.getText().toString();
 
-                boolean isLongitudeInputValid = seeIfStringIsValid(longitude);
-                boolean isLatitudeInputValid = seeIfStringIsValid(latitude);
+                boolean isAddressInputValid = seeIfStringIsValid(address);
                 boolean isLocationInputValid = seeIfStringIsValid(location);
-                Log.i(TAG, "We are logging in onClick() and the longitude is: " + isLongitudeInputValid);
 
-                if (isLongitudeInputValid && isLatitudeInputValid && isLocationInputValid) {
-                    saveCollection(latitude, longitude, location);
+                if (isAddressInputValid && isLocationInputValid) {
+                    saveCollection(location, address);
                     startMainActivity();
                 } else {
                     alertUserAboutEmptyFields();
@@ -85,21 +75,16 @@ public class StartActivity extends Activity {
 
     }
 
-    private void insertSharedPrefIntoLayout(String location, String latitude, String longitude) {
+    private void insertSharedPrefIntoLayout(String location, String address) {
         mLocation.setText(location);
-        mLatitude.setText(latitude);
-        mLongitude.setText(longitude);
+        mAddress.setText(address);
     }
 
     private boolean checkIfSharedPrefs(SharedPreferences myPrefs) {
         String location = myPrefs.getString(PREF_LOCATION, null);
-        String latitude = myPrefs.getString(PREF_LATITUDE, null);
-        String longitude = myPrefs.getString(PREF_LONGITUDE, null);
-        Log.i(TAG, "We are logging in checkIfSharedPrefs() and the location is: " + location);
-        Log.i(TAG, "We are logging in checkIfSharedPrefs() and the latitude is: " + latitude);
-        Log.i(TAG, "We are logging in checkIfSharedPrefs() and the longitude is: " + longitude);
+        String address = myPrefs.getString(PREF_ADDRESS, null);
 
-        if (location != null && latitude !=null && longitude !=null) {
+        if (location != null && address !=null) {
             return true;
         }
         else {
@@ -107,12 +92,11 @@ public class StartActivity extends Activity {
         }
     }
 
-    private void saveCollection(String latitude, String longitude, String location) {
+    private void saveCollection(String location, String address ) {
         SharedPreferences settings = this.getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString(PREF_LOCATION, location);
-        prefEditor.putString(PREF_LATITUDE, latitude);
-        prefEditor.putString(PREF_LONGITUDE, longitude);
+        prefEditor.putString(PREF_ADDRESS, address);
         prefEditor.clear();
         prefEditor.commit();
     }
