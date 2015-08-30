@@ -78,10 +78,9 @@
         android:textColor="#ffffffff"
         android:textAllCaps="false"
         android:textSize="@dimen/textSixe_20sp"
-        android:layout_below="@+id/writeLongitude"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"/>
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:id="@+id/hrefLatLong"
@@ -91,6 +90,23 @@
         android:textSize="@dimen/textSixe_20sp"
         android:textColor="@android:color/white"
         android:layout_below="@+id/welcomeToStart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:id="@+id/writeAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:textColor="#ffffffff"
+        android:singleLine="true"
+        android:theme="@style/MyEditTextTheme"
+        android:textSize="@dimen/textSixe_20sp"
+        android:hint="Address"
+        android:layout_alignLeft="@+id/writeLocationInStart"
+        android:layout_alignRight="@+id/writeLocationInStart"
+        android:textColorHint="@android:color/white"
+        android:layout_below="@+id/writeLongitude"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
