@@ -90,7 +90,6 @@ public class MainActivity extends ActionBarActivity {
         setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);
 
-
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

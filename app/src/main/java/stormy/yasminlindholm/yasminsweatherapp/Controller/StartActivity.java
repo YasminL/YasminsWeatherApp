@@ -61,7 +61,6 @@ public class StartActivity extends Activity {
             startMainActivity();
         }
 
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
