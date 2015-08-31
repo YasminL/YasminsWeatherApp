@@ -22,7 +22,8 @@ import stormy.yasminlindholm.yasminsweatherapp.R;
 public class DailyForecastActivity extends ListActivity {
 
     public static final String TAG = DailyForecastActivity.class.getSimpleName();
-    private static final String PREF_NAME = "Location";
+
+    private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
 
     private DailyWeather[] mDailyWeather;

@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
 
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
-    private static final String PREF_ADDRESS = "LocationLongitude";
+    private static final String PREF_ADDRESS = "Address";
 
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();

@@ -50,7 +50,6 @@ public class DayAdapter extends BaseAdapter {
             holder.tempMinLabel = (TextView) convertViewNeedsToBeCreated.findViewById(R.id.tempMinLabel);
             holder.tempMaxLabel = (TextView) convertViewNeedsToBeCreated.findViewById(R.id.tempMaxLabel);
 
-
             convertViewNeedsToBeCreated.setTag(holder);
         }
         else {
