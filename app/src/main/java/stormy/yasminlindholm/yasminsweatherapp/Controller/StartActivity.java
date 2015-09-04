@@ -1,32 +1,25 @@
 package stormy.yasminlindholm.yasminsweatherapp.Controller;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
 public class StartActivity extends Activity {
 
     public final static String TAG = StartActivity.class.getSimpleName();
-
     AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
 
+    private GoogleApiClient mGoogleApiClient;
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
     private static final String PREF_ADDRESS = "LocationLongitude";
@@ -40,6 +33,13 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        mGoogleApiClient = new GoogleApiClient.Builder(context)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) this)
+                .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
+                .build();
 
         mAddress = (EditText) findViewById(R.id.writeAddress);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
@@ -72,7 +72,18 @@ public class StartActivity extends Activity {
                 }
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
     }
 
     private void insertSharedPrefIntoLayout(String location, String address) {
