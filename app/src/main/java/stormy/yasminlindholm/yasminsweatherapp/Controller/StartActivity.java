@@ -81,9 +81,9 @@ public class StartActivity extends Activity {
     }
 
     public void getLatitudeLongitudeFromAddressThroughGoogleAPI(String address) {
-        String APIKey = getResources().getString(R.string.API_Key);
-        String GoogleAPIURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?" + address + "&" + APIKey;
-        Log.i(TAG, "We are logging in getLatitudeLongitudeFromAddressThroughGoogleAPI" + GoogleAPIURL);
+        String APIKey = getResources().getString(R.string.API_ServerKey);
+        String GoogleAPIURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + address + "&radius=5000&key=" + APIKey + "&sensor=true";
+        Log.i(TAG, "We are logging in getLatitudeLongitudeFromAddressThroughGoogleAPI " + GoogleAPIURL);
     }
 
     /* @Override
