@@ -12,30 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.places.Places;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
-public class StartActivity extends
-        implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
-
-    protected GoogleApiClient mGoogleApiClient;
-    private PlaceAutocompleteAdapter mAdapter;
-
-    private AutoCompleteTextView mAutocompleteView;
+public class StartActivity extends Activity {
+    //protected GoogleApiClient mGoogleApiClient;
 
     public final static String TAG = StartActivity.class.getSimpleName();
     AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
 
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
-    private static final String PREF_ADDRESS = "LocationLongitude";
+    private static final String PREF_ADDRESS = "LocationAddress";
 
     private EditText mAddress;
     private EditText mLocation;
@@ -46,9 +37,9 @@ public class StartActivity extends
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        /* mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Places.GEO_DATA_API)
-                .build();
+                .build(); */
 
         setContentView(R.layout.activity_start);
         SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
@@ -59,8 +50,11 @@ public class StartActivity extends
 
         if (checkIfSharedPrefs(myPrefs)) {
             String location = myPrefs.getString(PREF_LOCATION, null);
+            Log.i(TAG, "We are logging in checkifSharedPrefs() anf the location is: " + location);
             String address = myPrefs.getString(PREF_ADDRESS, null);
+            Log.i(TAG, "We are logging in checkifSharedPrefs() anf the address is: " + address);
             insertSharedPrefIntoLayout(location, address);
+            getLatitudeLongitudeFromAddressThroughGoogleAPI(address);
             startMainActivity();
         }
 
@@ -86,7 +80,13 @@ public class StartActivity extends
 
     }
 
-    @Override
+    public void getLatitudeLongitudeFromAddressThroughGoogleAPI(String address) {
+        String APIKey = getResources().getString(R.string.API_Key);
+        String GoogleAPIURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?" + address + "&" + APIKey;
+        Log.i(TAG, "We are logging in getLatitudeLongitudeFromAddressThroughGoogleAPI" + GoogleAPIURL);
+    }
+
+    /* @Override
     protected void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
@@ -96,7 +96,7 @@ public class StartActivity extends
     protected void onStop() {
         super.onStop();
         mGoogleApiClient.disconnect();
-    }
+    } */
 
     private void insertSharedPrefIntoLayout(String location, String address) {
         mLocation.setText(location);
@@ -107,15 +107,14 @@ public class StartActivity extends
         String location = myPrefs.getString(PREF_LOCATION, null);
         String address = myPrefs.getString(PREF_ADDRESS, null);
 
-        if (location != null && address !=null) {
+        if (location != null && address != null) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    private void saveCollection(String location, String address ) {
+    private void saveCollection(String location, String address) {
         SharedPreferences settings = this.getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString(PREF_LOCATION, location);
@@ -131,8 +130,7 @@ public class StartActivity extends
     private boolean seeIfStringIsValid(String str) {
         if (str == null || str.trim().equals("")) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -140,28 +138,5 @@ public class StartActivity extends
     private void startMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.e(TAG, "onConnectionFailed: ConnectionResult.getErrorCode() = "
-                + connectionResult.getErrorCode());
-
-        // TODO(Developer): Check error code and notify the user of error state and resolution.
-        Toast.makeText(this,
-                "Could not connect to Google API Client: Error " + connectionResult.getErrorCode(),
-                Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-        mAdapter.setGoogleApiClient(mGoogleApiClient);
-        Log.i(TAG, "GoogleApiClient connected.");
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        mAdapter.setGoogleApiClient(null);
-        Log.e(TAG, "GoogleApiClient connection suspended.");
     }
 }

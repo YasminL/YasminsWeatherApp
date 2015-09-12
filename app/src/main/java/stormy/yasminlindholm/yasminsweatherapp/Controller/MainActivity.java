@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
 
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
-    private static final String PREF_ADDRESS = "Address";
+    private static final String PREF_ADDRESS = "LocationAddress";
 
     private AlertDialogFragment_error dialogError = new AlertDialogFragment_error();
     private AlertDialogFragment_noInternet dialogNoInteret = new AlertDialogFragment_noInternet();
@@ -79,8 +79,8 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences settings = getSharedPreferences(PREF_NAME, 0);
         final String location = settings.getString(PREF_LOCATION, "empty");
         String spAddress = settings.getString(PREF_ADDRESS, "Alcatraz");
-        Log.i(TAG, "We are logging in OnCreate() and the location is: " + location);
-        Log.i(TAG, "We are logging in OnCreate() and the latitude is: " + spAddress);
+        Log.i(TAG, "We are logging in OnCreate() and the location name is: " + location);
+        Log.i(TAG, "We are logging in OnCreate() and the address is: " + spAddress);
 
         setLocation(location);
         mProgressBar.setVisibility(View.INVISIBLE);

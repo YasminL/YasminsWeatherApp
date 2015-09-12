@@ -44,15 +44,12 @@
 
     <ImageView
         android:id="@+id/weatherIconImage"
-        android:layout_width="@dimen/padding_50dp"
-        android:layout_height="@dimen/padding_50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:src="@mipmap/cloudy"
-        android:layout_above="@+id/timeLabel"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/timeZoneLabel"
-        android:layout_alignEnd="@+id/timeZoneLabel"
-        android:layout_alignLeft="@+id/timeZoneLabel"
-        android:layout_alignStart="@+id/timeZoneLabel"/>
+        android:layout_above="@+id/timeLabel"/>
 
     <ImageView
         android:id="@+id/refreshImage"
