@@ -5,21 +5,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
 
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
-public class StartActivity extends Activity {
+public class StartActivity extends
+        implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+
+    protected GoogleApiClient mGoogleApiClient;
+    private PlaceAutocompleteAdapter mAdapter;
+
+    private AutoCompleteTextView mAutocompleteView;
 
     public final static String TAG = StartActivity.class.getSimpleName();
     AlertDialogFragment_emptyField alertDialog = new AlertDialogFragment_emptyField();
 
-    private GoogleApiClient mGoogleApiClient;
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
     private static final String PREF_ADDRESS = "LocationLongitude";
@@ -32,20 +45,17 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(context)
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .addConnectionCallbacks((GoogleApiClient.ConnectionCallbacks) this)
-                .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
                 .build();
+
+        setContentView(R.layout.activity_start);
+        SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 
         mAddress = (EditText) findViewById(R.id.writeAddress);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
-
-        SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 
         if (checkIfSharedPrefs(myPrefs)) {
             String location = myPrefs.getString(PREF_LOCATION, null);
@@ -72,6 +82,8 @@ public class StartActivity extends Activity {
                 }
             }
         });
+
+
     }
 
     @Override
@@ -128,5 +140,28 @@ public class StartActivity extends Activity {
     private void startMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e(TAG, "onConnectionFailed: ConnectionResult.getErrorCode() = "
+                + connectionResult.getErrorCode());
+
+        // TODO(Developer): Check error code and notify the user of error state and resolution.
+        Toast.makeText(this,
+                "Could not connect to Google API Client: Error " + connectionResult.getErrorCode(),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        mAdapter.setGoogleApiClient(mGoogleApiClient);
+        Log.i(TAG, "GoogleApiClient connected.");
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mAdapter.setGoogleApiClient(null);
+        Log.e(TAG, "GoogleApiClient connection suspended.");
     }
 }
