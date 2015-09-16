@@ -16,6 +16,11 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import stormy.yasminlindholm.yasminsweatherapp.Model.DailyWeather;
 import stormy.yasminlindholm.yasminsweatherapp.R;
 
 public class StartActivity extends Activity {
@@ -54,7 +59,6 @@ public class StartActivity extends Activity {
             String address = myPrefs.getString(PREF_ADDRESS, null);
             Log.i(TAG, "We are logging in checkifSharedPrefs() anf the address is: " + address);
             insertSharedPrefIntoLayout(location, address);
-            getLatitudeLongitudeFromAddressThroughGoogleAPI(address);
             startMainActivity();
         }
 
@@ -76,27 +80,23 @@ public class StartActivity extends Activity {
                 }
             }
         });
-
-
+        
     }
-
-    public void getLatitudeLongitudeFromAddressThroughGoogleAPI(String address) {
+/*
+    private Addresses[] getSuggestionsOfAddressesFromGoogleAPI(String jsonData) throws JSONException {
         String APIKey = getResources().getString(R.string.API_ServerKey);
         String GoogleAPIURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + address + "&radius=5000&key=" + APIKey + "&sensor=true";
         Log.i(TAG, "We are logging in getLatitudeLongitudeFromAddressThroughGoogleAPI " + GoogleAPIURL);
-    }
 
-    /* @Override
-    protected void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
+        JSONObject addresses = new JSONObject(jsonData);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mGoogleApiClient.disconnect();
-    } */
+          private DailyWeather[] getDailyDetails(String jsonData) throws JSONException {
+        JSONObject forecast = new JSONObject(jsonData);
+        String timeZone = forecast.getString("timezone");
+        JSONObject daily = forecast.getJSONObject("daily");
+        JSONArray data = daily.getJSONArray("data");
+
+        DailyWeather*/
 
     private void insertSharedPrefIntoLayout(String location, String address) {
         mLocation.setText(location);
