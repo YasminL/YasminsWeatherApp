@@ -46,10 +46,10 @@
         android:textColor="#ffffffff"
         android:textAllCaps="false"
         android:textSize="@dimen/textSixe_20sp"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/writeAddress"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"/>
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:id="@+id/hrefLatLong"
@@ -62,7 +62,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/writeAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

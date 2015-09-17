@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,8 +34,9 @@ public class StartActivity extends Activity {
     private static final String PREF_NAME = "SharedPreferences_Location";
     private static final String PREF_LOCATION = "LocationName";
     private static final String PREF_ADDRESS = "LocationAddress";
+    private ArrayAdapter<String> adapter;
 
-    private EditText mAddress;
+    private AutoCompleteTextView mAddress;
     private EditText mLocation;
     private Button mButton;
     public Context context;
@@ -41,18 +44,20 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /* mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Places.GEO_DATA_API)
-                .build(); */
-
         setContentView(R.layout.activity_start);
+
         SharedPreferences myPrefs = this.getSharedPreferences(PREF_NAME, 0);
 
-        mAddress = (EditText) findViewById(R.id.writeAddress);
+        mAddress = (AutoCompleteTextView) findViewById(R.id.writeAddress);
         mLocation = (EditText) findViewById(R.id.writeLocationInStart);
         mButton = (Button) findViewById(R.id.continueToMainPage);
 
+        String[] colors = getResources().getStringArray(R.array.colorList);
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colors);
+        mAddress.setThreshold(1);
+        mAddress.setAdapter(adapter);
+        
         if (checkIfSharedPrefs(myPrefs)) {
             String location = myPrefs.getString(PREF_LOCATION, null);
             Log.i(TAG, "We are logging in checkifSharedPrefs() anf the location is: " + location);

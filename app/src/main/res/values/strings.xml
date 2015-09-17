@@ -23,4 +23,11 @@
     <string name="error_fillInAllFields">Please fill in all fields</string>
     <string name="title_activity_shared_preferences">SharedPreferences</string>
 
+    <string-array name="colorList">
+        <item>Pink</item>
+        <item>Person</item>
+        <item>Plue</item>
+        <item>Ped</item>
+    </string-array>
+
 </resources>
