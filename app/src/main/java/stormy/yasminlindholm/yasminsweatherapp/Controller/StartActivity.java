@@ -57,7 +57,7 @@ public class StartActivity extends Activity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colors);
         mAddress.setThreshold(1);
         mAddress.setAdapter(adapter);
-        
+
         if (checkIfSharedPrefs(myPrefs)) {
             String location = myPrefs.getString(PREF_LOCATION, null);
             Log.i(TAG, "We are logging in checkifSharedPrefs() anf the location is: " + location);
@@ -73,6 +73,7 @@ public class StartActivity extends Activity {
 
                 final String location = mLocation.getText().toString();
                 final String address = mAddress.getText().toString();
+                getSuggestionsOfAddressesFromGoogleAPI(address);
 
                 boolean isAddressInputValid = seeIfStringIsValid(address);
                 boolean isLocationInputValid = seeIfStringIsValid(location);
@@ -87,21 +88,12 @@ public class StartActivity extends Activity {
         });
         
     }
-/*
-    private Addresses[] getSuggestionsOfAddressesFromGoogleAPI(String jsonData) throws JSONException {
+
+    private void getSuggestionsOfAddressesFromGoogleAPI(String address) {
         String APIKey = getResources().getString(R.string.API_ServerKey);
         String GoogleAPIURL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + address + "&radius=5000&key=" + APIKey + "&sensor=true";
         Log.i(TAG, "We are logging in getLatitudeLongitudeFromAddressThroughGoogleAPI " + GoogleAPIURL);
-
-        JSONObject addresses = new JSONObject(jsonData);
-
-          private DailyWeather[] getDailyDetails(String jsonData) throws JSONException {
-        JSONObject forecast = new JSONObject(jsonData);
-        String timeZone = forecast.getString("timezone");
-        JSONObject daily = forecast.getJSONObject("daily");
-        JSONArray data = daily.getJSONArray("data");
-
-        DailyWeather*/
+    }
 
     private void insertSharedPrefIntoLayout(String location, String address) {
         mLocation.setText(location);

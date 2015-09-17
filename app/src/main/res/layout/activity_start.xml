@@ -69,11 +69,13 @@
         android:textColor="#ffffffff"
         android:singleLine="true"
         android:capitalize="characters"
+        android:imeOptions="normal"
         android:theme="@style/MyEditTextTheme"
         android:textSize="@dimen/textSixe_20sp"
         android:hint="Address"
-        android:layout_alignLeft="@+id/writeLocationInStart"
         android:textColorHint="@android:color/white"
-        android:layout_below="@+id/writeLocationInStart"/>
+        android:layout_below="@+id/writeLocationInStart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
